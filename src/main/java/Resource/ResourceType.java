@@ -1,5 +1,5 @@
 package Resource;
 
 public enum ResourceType {
-    RED,BLUE,GREEN
+    FOOD, Point
 }

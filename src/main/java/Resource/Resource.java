@@ -1,5 +1,7 @@
 package Resource;
 
+import java.util.Random;
+
 public class Resource {
     protected ResourceType type;
 

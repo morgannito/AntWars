@@ -9,6 +9,7 @@ public class Ant_Soldier extends Ant {
                 super(color);
     }
 
+
     public void update() {
         // todo
     }
