@@ -1,5 +1,5 @@
 package Ant;
 
-public enum color {
+public enum AnthillColor {
     RED,BLUE,GREEN, YELLOW
 }

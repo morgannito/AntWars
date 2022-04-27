@@ -18,6 +18,16 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+//        launch();
+
+        // creer une matrice de 500*500 et l'affiche dans la console
+            int[][] matrice = new int[10][10];
+            for (int i = 0; i < matrice.length; i++) {
+                for (int j = 0; j < matrice[i].length; j++) {
+                    matrice[i][j] = 0;
+                    System.out.print(matrice[i][j] + "0");
+                }
+                System.out.println();
+            }
     }
 }

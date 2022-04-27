@@ -1,11 +1,11 @@
 package Ant;
 
-import Ressource.Ressource;
+import Resource.Resource;
 import javafx.beans.Observable;
 
 public class Ant_Worker extends Ant{
 
-     protected arrayList<Ressource> ressouces;
+     protected arrayList<Resource> ressouces;
 
     protected Ant_Worker(Anthill color) {
         super(color);

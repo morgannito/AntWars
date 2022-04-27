@@ -1,14 +1,13 @@
 package Ant;
 
-import Ressource.Ressource;
-import Ant.Anthill;
+import Resource.Resource;
 
 public class Anthill {
 
     protected arrayList<Ant_Worker> workers;
     protected arrayList<Ant_Soldier> soldiers;
-    protected arrayList<Ressource> ressources;
-    protected color color;
+    protected arrayList<Resource> ressources;
+    protected AnthillColor color;
 
 
 
@@ -17,7 +16,7 @@ public class Anthill {
         // TODO run anthill
     }
 
-    public void addRessouce(Ressource r){
+    public void addRessouce(Resource r){
         // TODO add ressource to anthill
     }
 

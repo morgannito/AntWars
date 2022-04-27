@@ -1,6 +1,6 @@
 package Ant;
 
-import Ressource.Ressource;
+import Resource.Resource;
 
 public abstract class Ant {
 
@@ -11,7 +11,7 @@ public abstract class Ant {
         this.isInjured = false;
     }
 
-    arrayList<Ressource> kill() {
+    arrayList<Resource> kill() {
         return null;
     }
 
