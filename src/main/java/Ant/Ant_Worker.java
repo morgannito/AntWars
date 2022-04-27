@@ -1,12 +1,26 @@
 package Ant;
 
+import Ressource.Ressource;
+import javafx.beans.Observable;
+
 public class Ant_Worker extends Ant{
-    public Ant_Worker(int id, int position_X, int position_Y) {
-        super(id, position_X, position_Y);
+
+     protected arrayList<Ressource> ressouces;
+
+    protected Ant_Worker(Anthill color) {
+        super(color);
     }
+
+    public void update() {
+        // todo
+    }
+
+
 
     @Override
     public void run() {
+    }
+    public void addObserver(Observable o) {
 
     }
 }
