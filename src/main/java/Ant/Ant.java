@@ -10,7 +10,13 @@ public abstract class Ant {
     protected int position_X;
     protected int position_Y;
     protected int life_points;
-//    protected enum color;
+
+    protected enum color{
+        red,
+        blue,
+        green,
+        yellow,
+    }
 
     // constructeur
     public Ant(int id, int position_X, int position_Y) {
