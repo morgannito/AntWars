@@ -7,7 +7,7 @@ public class Ant_Worker extends Ant{
 
      protected arrayList<Resource> ressouces;
 
-    protected Ant_Worker(Anthill color) {
+    public Ant_Worker(AnthillColor color) {
         super(color);
     }
 

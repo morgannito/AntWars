@@ -5,8 +5,8 @@ import Resource.Resource;
 public abstract class Ant {
 
     protected boolean isInjured;
-    protected Anthill color;
-    protected Ant(Anthill color) {
+    protected AnthillColor color;
+    protected Ant(AnthillColor color) {
         this.color = color;
         this.isInjured = false;
     }
@@ -23,11 +23,11 @@ public abstract class Ant {
         isInjured = injured;
     }
 
-    public Anthill getColor() {
+    public AnthillColor getColor() {
         return color;
     }
 
-    public void setColor(Anthill color) {
+    public void setColor(AnthillColor color) {
         this.color = color;
     }
 

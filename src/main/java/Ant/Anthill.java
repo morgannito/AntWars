@@ -6,11 +6,12 @@ import java.util.ArrayList;
 
 public class Anthill {
 
+
+
     protected ArrayList<Ant_Worker> workers;
     protected ArrayList<Ant_Soldier> soldiers;
     protected ArrayList<Resource> resources;
     protected AnthillColor color;
-
 
 
     public Anthill(ArrayList<Ant_Worker> workers,ArrayList<Ant_Soldier> soldiers, ArrayList<Resource> resources, AnthillColor color){
@@ -28,6 +29,14 @@ public class Anthill {
         // TODO add ressource to anthill
     }
 
+    public ArrayList<Ant_Soldier> getSoldiers() {
+        return soldiers;
+    }
+
+    public void setSoldiers(ArrayList<Ant_Soldier> soldiers) {
+        this.soldiers = soldiers;
+    }
+
     public int getScore(){
         // TODO return score
         return 0;
@@ -35,6 +44,21 @@ public class Anthill {
     public Ant killAnt(Ant a){
         // TODO kill ant
         return null;
+    }
+
+    public ArrayList<Ant_Worker> getWorkers() {
+        return workers;
+    }
+
+    public void setWorkers(ArrayList<Ant_Worker> workers) {
+        this.workers = workers;
+    }
+    public AnthillColor getColor() {
+        return color;
+    }
+
+    public void setColor(AnthillColor color) {
+        this.color = color;
     }
 
     private class arrayList<T> {

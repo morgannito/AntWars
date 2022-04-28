@@ -5,7 +5,7 @@ import javafx.beans.Observable;
 
 public class Ant_Soldier extends Ant {
 
-    protected Ant_Soldier(Anthill color) {
+    public Ant_Soldier(AnthillColor color) {
                 super(color);
     }
 
