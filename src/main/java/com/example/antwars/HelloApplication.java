@@ -14,10 +14,14 @@ import javafx.scene.canvas.GraphicsContext;
 
 
 public class HelloApplication extends Application{
+
+    static Map map ;
     public static void main(String[] args)
     {
-        //Map.setNbTile(5, 5);
-        Map game = new Map(5,5);
+
+        map = new Map(20,20);
+        map.initMap();
+//        map.display(map);
 //        Map.consoleDraw();
 //        Master.shared().startGame();
         launch(HelloApplication.class, args);
@@ -30,7 +34,7 @@ public class HelloApplication extends Application{
         Group root = new Group();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        Canvas canvas = new Canvas( 500, 500);
+        Canvas canvas = new Canvas( 1080, 800);
         root.getChildren().add( canvas );
 
         new AnimationTimer()
@@ -40,6 +44,7 @@ public class HelloApplication extends Application{
             {
                 GraphicsContext gc = canvas.getGraphicsContext2D();
                 gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+                map.displayFx(gc);
 //                Map.getTiles().draw(gc);
                 try {
                     Thread.sleep(40);

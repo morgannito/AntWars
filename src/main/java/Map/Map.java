@@ -10,9 +10,6 @@ import java.util.List;
 
 public  class Map {
 
-
-
-
     public int getWidth() {
         return width;
     }
@@ -84,6 +81,9 @@ public  class Map {
         }
     }
 
+
+
+
     public void display(Map map) {
         for (int i = 0; i < map.getHeight(); i++) {
             for (int j = 0; j < map.getWidth(); j++) {
@@ -95,6 +95,13 @@ public  class Map {
         }
     }
 
+        public void displayFx(GraphicsContext gfx){
+            for (int i = 0; i < this.getHeight(); i++) {
+                for (int j = 0; j < this.getWidth(); j++) {
+                    this.tiles[i][j].displayFx(gfx, i , j);
+                }
+            }
+        }
     public void draw(GraphicsContext gc){
         for(int i = 0; i< tiles.length; i++){
             for(Tile tile: tiles[i]){

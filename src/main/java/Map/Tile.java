@@ -3,12 +3,15 @@ package Map;
 import Ant.*;
 import Resource.*;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.animation.AnimationTimer;
+import javafx.scene.Group;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
 public class Tile   {
-
-
     arrayList<Resource> resources;
     arrayList<Ant> Ants;
     Anthill anthill;
@@ -43,6 +46,15 @@ public class Tile   {
     }
 
     public void draw(GraphicsContext gc) {
+    }
+
+    public void displayFx(GraphicsContext gfx,int x , int y) {
+        gfx.setFill(Color.GREEN);
+        gfx.fillRect(x*40,y*40,40,40);
+        gfx.setLineWidth(0.5);
+        gfx.setStroke(Color.BLACK);
+        gfx.strokeRect(x*40,y*40,40,40);
+
     }
 
 
