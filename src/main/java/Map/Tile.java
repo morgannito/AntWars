@@ -2,6 +2,7 @@ package Map;
 
 import Ant.*;
 import Resource.*;
+import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,12 @@ public class Tile   {
 
     public void setResources(arrayList<Resource> resources) {
         this.resources = resources;
+    }
+
+    public void drawBackground(GraphicsContext gc) {
+    }
+
+    public void draw(GraphicsContext gc) {
     }
 
 
