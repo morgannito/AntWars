@@ -3,10 +3,6 @@ package Map;
 import Ant.*;
 import Resource.*;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.animation.AnimationTimer;
-import javafx.scene.Group;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -48,13 +44,37 @@ public class Tile   {
     public void draw(GraphicsContext gc) {
     }
 
-    public void displayFx(GraphicsContext gfx,int x , int y) {
-        gfx.setFill(Color.GREEN);
-        gfx.fillRect(x*40,y*40,40,40);
-        gfx.setLineWidth(0.5);
-        gfx.setStroke(Color.BLACK);
-        gfx.strokeRect(x*40,y*40,40,40);
+    public void displayFx(GraphicsContext gfx, int x , int y, AnthillColor color) {
+        int taille = 40;
 
+        if(color == AnthillColor.BLUE){
+            gfx.setFill(Color.BLUE);
+            gfx.fillRect(x*taille,y*taille,taille,taille);
+            gfx.setLineWidth(0.5);
+            gfx.setStroke(Color.BLACK);
+            gfx.strokeRect(x*taille,y*taille,taille,taille);
+        }
+        if(color == AnthillColor.RED){
+            gfx.setFill(Color.RED);
+            gfx.fillRect(x*taille,y*taille,taille,taille);
+            gfx.setLineWidth(0.5);
+            gfx.setStroke(Color.BLACK);
+            gfx.strokeRect(x*taille,y*taille,taille,taille);
+        }
+        if(color == AnthillColor.YELLOW){
+            gfx.setFill(Color.YELLOW);
+            gfx.fillRect(x*taille,y*taille,taille,taille);
+            gfx.setLineWidth(0.5);
+            gfx.setStroke(Color.BLACK);
+            gfx.strokeRect(x*taille,y*taille,taille,taille);
+        }
+        if(color == null){
+                gfx.setFill(Color.GREEN);
+                gfx.fillRect(x*taille,y*taille,taille,taille);
+                gfx.setLineWidth(0.5);
+                gfx.setStroke(Color.BLACK);
+                gfx.strokeRect(x*taille,y*taille,taille,taille);
+        }
     }
 
 

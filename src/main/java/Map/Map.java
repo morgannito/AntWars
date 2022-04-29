@@ -47,7 +47,8 @@ public  class Map {
     public void initMap() {
         this.tiles = new Tile[this.width][this.height];
         // creer un tableau de 3 couleur
-        String[] str_array = {"RED", "YELLOW", "BLUE"};
+
+        String[] str_array = {"RED","YELLOW","BLUE"};
         List<String> list = new ArrayList<String>(Arrays.asList(str_array));
         for (int i = 0; i < this.width; i++) {
             for (int j = 0; j < this.height; j++) {
@@ -88,7 +89,7 @@ public  class Map {
         for (int i = 0; i < map.getHeight(); i++) {
             for (int j = 0; j < map.getWidth(); j++) {
 //                System.out.print(this.tiles[i][j].anthill.getColor());
-                System.out.print(this.tiles[i][j].anthill.getSoldiers().size());
+//                System.out.print(this.tiles[i][j].anthill.getSoldiers().size());
 //                System.out.print();
             }
             System.out.println();
@@ -98,7 +99,14 @@ public  class Map {
         public void displayFx(GraphicsContext gfx){
             for (int i = 0; i < this.getHeight(); i++) {
                 for (int j = 0; j < this.getWidth(); j++) {
-                    this.tiles[i][j].displayFx(gfx, i , j);
+                    System.out.print(this.tiles[i][j].anthill.getColor());
+
+                    if (this.tiles[i][j].anthill != null){
+                        this.tiles[i][j].displayFx(gfx, i, j, this.tiles[i][j].anthill.getColor());
+                    }
+                    else{
+                        this.tiles[i][j].displayFx(gfx, i , j,null);
+                    }
                 }
             }
         }
