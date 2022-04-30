@@ -3,6 +3,8 @@ package Ant;
 import Map.Map;
 import Resource.Resource;
 
+import java.util.ArrayList;
+
 public abstract class Ant extends Thread{
 
     protected boolean isInjured;
@@ -14,7 +16,7 @@ public abstract class Ant extends Thread{
         this.isInjured = false;
     }
 
-    arrayList<Resource> kill() {
+    ArrayList<Resource> kill() {
         return null;
     }
 
@@ -51,8 +53,7 @@ public abstract class Ant extends Thread{
 
 
 
-    protected class arrayList<T> {
-    }
+
 
     public int getX() {
         return x;

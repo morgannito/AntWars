@@ -57,30 +57,14 @@ public  class Map {
     }
 
     public void initMap() {
-        this.tiles = new Tile[this.width][this.height];
-        // creer un tableau de 3 couleur
+        tiles = new Tile[width][height];
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                tiles[i][j] = new Tile(i, j);
 
-        String[] str_array = {"RED","YELLOW","BLUE"};
-        List<String> list = new ArrayList<String>(Arrays.asList(str_array));
-        for (int i = 0; i < this.width; i++) {
-            for (int j = 0; j < this.height; j++) {
-                ArrayList<Resource> resources = new ArrayList<Resource>();
-                // ajoute dans la liste ressources un nombre de 1 aléatoire de 1 à 50
-
-                try {
-                    String color = str_array[(int) (Math.random() * str_array.length)];
-                    list.remove(color);
-                    str_array = list.toArray(new String[0]);
-
-                    Tile tile = new Tile(new Anthill(null,null, resources,AnthillColor.valueOf(color)), resources,null,i,j);
-                    tiles[i][j] =tile;
-                }catch (Exception e){
-                       for (int k = 0; k < (int) (Math.random() * 50 + 1); k++) {
-                        resources.add(new Resource(ResourceType.FOOD));
-                    }
-                    Tile tile = new Tile(null, resources,null,i,j);
-                    tiles[i][j] =tile;
-                }
+                // ajoute des ressources sur la map
+//                tiles[i][j].addResource(new Resource(ResourceType.FOOD));
+//                Map map = Map.getInstance()
             }
         }
     }
@@ -93,7 +77,6 @@ public  class Map {
             for (int j = 0; j < map.getWidth(); j++) {
 //                System.out.print(this.tiles[i][j].anthill.getColor());
 //                System.out.print(this.tiles[i][j].anthill.getSoldiers().size());
-//                System.out.print();
             }
             System.out.println();
         }
@@ -102,13 +85,8 @@ public  class Map {
         public void displayFx(GraphicsContext gfx){
             for (int i = 0; i < this.getHeight(); i++) {
                 for (int j = 0; j < this.getWidth(); j++) {
-                    if (tiles[i][j].anthill != null){
-                        tiles[i][j].displayFx(gfx, i, j, tiles[i][j].anthill);
+                        tiles[i][j].displayFx(gfx);
                     }
-                    else{
-                        tiles[i][j].displayFx(gfx, i , j,null);
-                    }
-                }
             }
         }
     public void draw(GraphicsContext gc){

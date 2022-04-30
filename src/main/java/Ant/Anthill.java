@@ -27,7 +27,7 @@ public class Anthill extends Thread {
         initAnthillAnt();
         while (true){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -43,6 +43,7 @@ public class Anthill extends Thread {
         }
         for(int i = 0; i < 5; i++){
             Ant_Soldier w = new Ant_Soldier(this.color);
+            w.start();
             soldiers.add(w);
         }
     }
@@ -83,9 +84,4 @@ public class Anthill extends Thread {
         this.color = color;
     }
 
-
-
-
-    private class arrayList<T> {
-    }
 }

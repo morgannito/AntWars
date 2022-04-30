@@ -45,10 +45,11 @@ public class HelloApplication extends Application{
                 GraphicsContext gc = canvas.getGraphicsContext2D();
                 gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 map.displayFx(gc);
-//                Map.getTiles().draw(gc);
                 try {
                     Thread.sleep(40);
-                } catch (InterruptedException e) { }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }.start();
 
@@ -56,8 +57,7 @@ public class HelloApplication extends Application{
 
     }
 }
-
-//public class HelloApplication extends Application {
+//public class HelloApplication  {
 //
 //
 //
@@ -79,8 +79,5 @@ public class HelloApplication extends Application{
 //        map.display(map);
 //
 //        System.out.println("test");
-//
-//
-//
 //    }
 //}

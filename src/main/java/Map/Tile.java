@@ -8,17 +8,25 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Tile   {
     int  x;
     int y;
-    arrayList<Resource> resources;
-    arrayList<Ant> Ants;
+    ArrayList<Resource> resources;
+    ArrayList<Ant> Ants;
     Anthill anthill;
-    Tile(Anthill anthill, ArrayList<Resource> resources, ArrayList<Ant> ant, int x, int y) {
-        this.anthill = anthill;
-        this.Ants = new arrayList<Ant>();
-        this.resources = new arrayList<Resource>();
+
+
+    public Tile(int i, int j) {
+        x = i;
+        y = j;
+            resources = new ArrayList<>();
+           for (int k = 0; k < ThreadLocalRandom.current().nextInt(0, 50); k++) {
+               Resource resource = new Resource(ResourceType.FOOD);
+               resources.add(resource);
+           }
+        this.Ants = new ArrayList<Ant>();
     }
 
 
@@ -38,11 +46,11 @@ public class Tile   {
     }
 
 
-    public arrayList<Resource> getResources() {
+    public ArrayList<Resource> tile() {
         return resources;
     }
 
-    public void setResources(arrayList<Resource> resources) {
+    public void setResources(ArrayList<Resource> resources) {
         this.resources = resources;
     }
 
@@ -52,16 +60,16 @@ public class Tile   {
     public void draw(GraphicsContext gc) {
     }
 
-    public void displayFx(GraphicsContext gfx, int y , int x, Anthill anthill) {
+    public void displayFx(GraphicsContext gfx) {
         int taille = 40;
-
         try {
-            if(anthill.getColor() == AnthillColor.BLUE){
+            if(this.anthill.getColor() == AnthillColor.BLUE){
                 gfx.setFill(Color.BLUE);
                 gfx.fillRect(x*taille,y*taille,taille,taille);
                 gfx.setLineWidth(0.5);
                 gfx.setTextAlign(TextAlignment.CENTER);
                 gfx.setTextBaseline(VPos.CENTER);
+                gfx.setFill(Color.BLACK);
                 gfx.fillText(
                         "Text",
                         Math.round(40 / 2),
@@ -70,14 +78,14 @@ public class Tile   {
                 gfx.setStroke(Color.BLACK);
                 gfx.strokeRect(x*taille,y*taille,taille,taille);
             }
-            if(anthill.getColor() == AnthillColor.RED){
+            if(this.anthill.getColor() == AnthillColor.RED){
                 gfx.setFill(Color.RED);
                 gfx.fillRect(x*taille,y*taille,taille,taille);
                 gfx.setLineWidth(0.5);
                 gfx.setStroke(Color.BLACK);
                 gfx.strokeRect(x*taille,y*taille,taille,taille);
             }
-            if(anthill.getColor() == AnthillColor.YELLOW){
+            if(this.anthill.getColor() == AnthillColor.YELLOW){
                 gfx.setFill(Color.YELLOW);
                 gfx.fillRect(x*taille,y*taille,taille,taille);
                 gfx.setLineWidth(0.5);
@@ -88,11 +96,17 @@ public class Tile   {
             gfx.setFill(Color.GREEN);
             gfx.fillRect(x*taille,y*taille,taille,taille);
             gfx.setLineWidth(0.5);
+            gfx.setTextAlign(TextAlignment.CENTER);
+            gfx.setTextBaseline(VPos.CENTER);
+            gfx.setFill(Color.BLACK);
+            gfx.fillText(
+                    this.resources.size()+"",
+                    x*taille+5,
+                    y*taille+5
+            );
             gfx.setStroke(Color.BLACK);
             gfx.strokeRect(x*taille,y*taille,taille,taille);
         }
-
-
     }
 
     public int getX() {
@@ -111,14 +125,7 @@ public class Tile   {
         this.y = y;
     }
 
-
-    private class arrayList<T> {
-
-        public void add(T ant) {
-
-        }
-
-        public void remove(T ant) {
-        }
+    public void addResource(Resource resource) {
+        this.resources.add(resource);
     }
 }
