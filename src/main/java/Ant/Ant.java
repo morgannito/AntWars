@@ -4,6 +4,7 @@ import Map.Map;
 import Resource.Resource;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Ant extends Thread{
 
@@ -41,9 +42,8 @@ public abstract class Ant extends Thread{
     public  void run(){
         while(true){
             try{
-                // do something
-                Map.getInstance().moveTo(this,Map.getInstance().getRightTile(this));
-                Thread.sleep(5);
+                randomMove();
+                Thread.sleep(500);
                 System.out.println("Ant is moving " +this.getX()+" "+this.getY());
             }catch(InterruptedException e){
                 e.printStackTrace();
@@ -52,7 +52,28 @@ public abstract class Ant extends Thread{
     };  // run
 
 
+public void randomMove() {
+    int boundedRandomValue = ThreadLocalRandom.current().nextInt(0, 4);
+    try {
 
+        switch (boundedRandomValue) {
+            case 0:
+                Map.getInstance().moveTo(this, Map.getInstance().getBottomTile(this));
+                break;
+            case 1:
+                Map.getInstance().moveTo(this, Map.getInstance().getTopTile(this));
+                break;
+            case 2:
+                Map.getInstance().moveTo(this, Map.getInstance().getLeftTile(this));
+                break;
+            case 3:
+                Map.getInstance().moveTo(this, Map.getInstance().getRightTile(this));
+                break;
+        }
+    } catch (Exception e) {
+        randomMove();
+    }
+}
 
 
     public int getX() {

@@ -17,28 +17,44 @@ public class Tile   {
     ArrayList<Ant> Ants;
     Anthill anthill;
 
+    final Object lock = new Object();
+
+
 
     public Tile(int i, int j) {
         x = i;
         y = j;
-            resources = new ArrayList<>();
+        Ants = new ArrayList<Ant>();
+        resources = new ArrayList<>();
+
            for (int k = 0; k < ThreadLocalRandom.current().nextInt(0, 50); k++) {
                Resource resource = new Resource(ResourceType.FOOD);
                resources.add(resource);
            }
-        this.Ants = new ArrayList<Ant>();
+           if (x == 5 && y == 5) {
+               anthill = new Anthill(AnthillColor.RED);
+           }
+           if (x == 0  && y == 0 ) {
+            anthill = new Anthill(AnthillColor.BLUE);
+        }    if (x == 8  && y == 7 ){
+            anthill = new Anthill(AnthillColor.YELLOW);
+        }
     }
-
 
     public Anthill getAnthill() {
         return anthill;
     }
 
     public void addAnt(Ant ant){
-        this.Ants.add(ant);
+        synchronized (lock) {
+            Ants.add(ant);
+
+        }
     }
     public void removeAnt(Ant ant){
-        this.Ants.remove(ant);
+        synchronized (lock) {
+            Ants.remove(ant);
+        }
     }
 
     public void dropResource(Resource resource){
@@ -58,6 +74,11 @@ public class Tile   {
     }
 
     public void draw(GraphicsContext gc) {
+        if (Ants.size() > 0) {
+            gc.setFill(Color.PAPAYAWHIP);
+            gc.fillRect(x * 40, y * 40, 20, 20);
+
+        }
     }
 
     public void displayFx(GraphicsContext gfx) {
@@ -72,8 +93,8 @@ public class Tile   {
                 gfx.setFill(Color.BLACK);
                 gfx.fillText(
                         "Text",
-                        Math.round(40 / 2),
-                        Math.round(40 / 2)
+                        x*taille+5,
+                        y*taille+5
                 );
                 gfx.setStroke(Color.BLACK);
                 gfx.strokeRect(x*taille,y*taille,taille,taille);

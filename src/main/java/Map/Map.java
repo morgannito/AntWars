@@ -62,9 +62,6 @@ public  class Map {
             for (int j = 0; j < height; j++) {
                 tiles[i][j] = new Tile(i, j);
 
-                // ajoute des ressources sur la map
-//                tiles[i][j].addResource(new Resource(ResourceType.FOOD));
-//                Map map = Map.getInstance()
             }
         }
     }
@@ -86,21 +83,10 @@ public  class Map {
             for (int i = 0; i < this.getHeight(); i++) {
                 for (int j = 0; j < this.getWidth(); j++) {
                         tiles[i][j].displayFx(gfx);
+                    tiles[i][j].draw(gfx);
                     }
             }
         }
-    public void draw(GraphicsContext gc){
-        for(int i = 0; i< tiles.length; i++){
-            for(Tile tile: tiles[i]){
-                tile.drawBackground(gc);
-            }
-        }
-        for(int i = 0; i< tiles.length; i++){
-            for(Tile tile: tiles[i]){
-                tile.draw(gc);
-            }
-        }
-    }
 
     public Tile getTile(Ant ant){
         return tiles[ant.getX()][ant.getY()];

@@ -1,30 +1,40 @@
 package Ant;
 
 import Resource.Resource;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
 public class Anthill extends Thread {
-
-
-
-
     protected ArrayList<Ant_Worker> workers;
     protected ArrayList<Ant_Soldier> soldiers;
     protected ArrayList<Resource> resources;
     protected AnthillColor color;
 
 
-    public Anthill(ArrayList<Ant_Worker> workers,ArrayList<Ant_Soldier> soldiers, ArrayList<Resource> resources, AnthillColor color){
-            this.workers = workers;
-            this.soldiers = soldiers;
-            this.resources = resources;
-            this.color = color;
+    public Anthill(AnthillColor color){
+        this.workers = new ArrayList<>();
+        this.soldiers = new ArrayList<Ant_Soldier>();
+        this.resources = new ArrayList<>();
+        this.color = color;
+
+        for (int i = 0; i < 50; i++) {
+            Ant_Worker w = new Ant_Worker(color);
+            workers.add(w);
+            w.start();
+        }
+
+        for (int i = 0; i < 5; i++) {
+            Ant_Soldier w = new Ant_Soldier(color);
+            soldiers.add(w);
+            w.start();
+        }
+
+
     }
 
     public void run(){
         // TODO run anthill
-        initAnthillAnt();
         while (true){
             try {
                 Thread.sleep(10);
@@ -34,19 +44,6 @@ public class Anthill extends Thread {
         }
     }
 
-    public void initAnthillAnt(){
-        // creer 50 fourmis
-        for(int i = 0; i < 50; i++){
-            Ant_Worker w = new Ant_Worker(this.color);
-            w.start();
-            workers.add(w);
-        }
-        for(int i = 0; i < 5; i++){
-            Ant_Soldier w = new Ant_Soldier(this.color);
-            w.start();
-            soldiers.add(w);
-        }
-    }
 
     public void addRessouce(Resource r){
         // TODO add ressource to anthill
