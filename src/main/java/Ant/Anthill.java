@@ -4,7 +4,8 @@ import Resource.Resource;
 
 import java.util.ArrayList;
 
-public class Anthill {
+public class Anthill extends Thread {
+
 
 
 
@@ -23,6 +24,27 @@ public class Anthill {
 
     public void run(){
         // TODO run anthill
+        initAnthillAnt();
+        while (true){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void initAnthillAnt(){
+        // creer 50 fourmis
+        for(int i = 0; i < 50; i++){
+            Ant_Worker w = new Ant_Worker(this.color);
+            w.start();
+            workers.add(w);
+        }
+        for(int i = 0; i < 5; i++){
+            Ant_Soldier w = new Ant_Soldier(this.color);
+            soldiers.add(w);
+        }
     }
 
     public void addRessouce(Resource r){
@@ -60,6 +82,9 @@ public class Anthill {
     public void setColor(AnthillColor color) {
         this.color = color;
     }
+
+
+
 
     private class arrayList<T> {
     }

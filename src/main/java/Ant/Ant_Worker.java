@@ -17,9 +17,6 @@ public class Ant_Worker extends Ant{
 
 
 
-    @Override
-    public void run() {
-    }
     public void addObserver(Observable o) {
 
     }
