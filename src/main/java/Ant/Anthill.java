@@ -81,4 +81,11 @@ public class Anthill extends Thread {
         this.color = color;
     }
 
+    public ArrayList<Resource> getResources() {
+        return resources;
+    }
+
+    public void setResources(ArrayList<Resource> resources) {
+        this.resources = resources;
+    }
 }

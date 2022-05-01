@@ -98,7 +98,7 @@ public class Tile   {
                 gfx.setTextBaseline(VPos.CENTER);
                 gfx.setFill(Color.BLACK);
                 gfx.fillText(
-                        "Text",
+                        anthill.getResources().size()+"",
                         x*taille+5,
                         y*taille+5
                 );
@@ -109,6 +109,15 @@ public class Tile   {
                 gfx.setFill(Color.RED);
                 gfx.fillRect(x*taille,y*taille,taille,taille);
                 gfx.setLineWidth(0.5);
+
+                gfx.setTextAlign(TextAlignment.CENTER);
+                gfx.setTextBaseline(VPos.CENTER);
+                gfx.setFill(Color.BLACK);
+                gfx.fillText(
+                        anthill.getResources().size()+"",
+                        x*taille+5,
+                        y*taille+5
+                );
                 gfx.setStroke(Color.BLACK);
                 gfx.strokeRect(x*taille,y*taille,taille,taille);
             }
@@ -116,6 +125,15 @@ public class Tile   {
                 gfx.setFill(Color.YELLOW);
                 gfx.fillRect(x*taille,y*taille,taille,taille);
                 gfx.setLineWidth(0.5);
+
+                gfx.setTextAlign(TextAlignment.CENTER);
+                gfx.setTextBaseline(VPos.CENTER);
+                gfx.setFill(Color.BLACK);
+                gfx.fillText(
+                        anthill.getResources().size()+"",
+                        x*taille+5,
+                        y*taille+5
+                );
                 gfx.setStroke(Color.BLACK);
                 gfx.strokeRect(x*taille,y*taille,taille,taille);
             }

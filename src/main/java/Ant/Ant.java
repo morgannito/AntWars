@@ -47,7 +47,7 @@ public abstract class Ant extends Thread{
         while(true){
             try{
                 randomMove();
-                Thread.sleep(500);
+                Thread.sleep(50);
                 System.out.println("Ant is moving " +this.getX()+" "+this.getY());
             }catch(InterruptedException e){
                 e.printStackTrace();
