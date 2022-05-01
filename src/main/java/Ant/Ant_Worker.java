@@ -9,8 +9,8 @@ public class Ant_Worker extends Ant{
 
      protected ArrayList<Resource> ressouces;
 
-    public Ant_Worker(AnthillColor color) {
-        super(color);
+    public Ant_Worker(AnthillColor color, int x, int y) {
+        super(color, x, y);
     }
 
     public void update() {

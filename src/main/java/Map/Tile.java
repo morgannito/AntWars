@@ -32,12 +32,12 @@ public class Tile   {
                resources.add(resource);
            }
            if (x == 5 && y == 5) {
-               anthill = new Anthill(AnthillColor.RED);
+               anthill = new Anthill(AnthillColor.RED,5,5);
            }
            if (x == 0  && y == 0 ) {
-            anthill = new Anthill(AnthillColor.BLUE);
+            anthill = new Anthill(AnthillColor.BLUE,0,0);
         }    if (x == 8  && y == 7 ){
-            anthill = new Anthill(AnthillColor.YELLOW);
+            anthill = new Anthill(AnthillColor.YELLOW,8,7);
         }
     }
 
@@ -75,9 +75,15 @@ public class Tile   {
 
     public void draw(GraphicsContext gc) {
         if (Ants.size() > 0) {
-            gc.setFill(Color.PAPAYAWHIP);
-            gc.fillRect(x * 40, y * 40, 20, 20);
-
+            for (Ant ant : Ants) {
+                // convertie la couleur de la fourmi en paint javafx
+                // transforme la couleur en string
+                String color = ant.getColor().toString();
+                // transforme la couleur en color javafx
+                Color antColor = Color.valueOf(color);
+                gc.setFill(antColor);
+                gc.fillOval(x * 40 + 15, y * 40 + 15, 10, 10);
+            }
         }
     }
 

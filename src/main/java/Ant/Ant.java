@@ -2,6 +2,7 @@ package Ant;
 
 import Map.Map;
 import Resource.Resource;
+import javafx.scene.paint.Paint;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,8 +12,11 @@ public abstract class Ant extends Thread{
     protected boolean isInjured;
     protected int x;
     protected int y;
-    protected AnthillColor color;
-    protected Ant(AnthillColor color) {
+    public AnthillColor color;
+    protected Ant(AnthillColor color, int x, int y) {
+        this.x = x;
+        this.y = y;
+
         this.color = color;
         this.isInjured = false;
     }
@@ -49,7 +53,7 @@ public abstract class Ant extends Thread{
                 e.printStackTrace();
             }
         }
-    };  // run
+    };
 
 
 public void randomMove() {
