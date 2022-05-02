@@ -21,9 +21,6 @@ public class HelloApplication extends Application{
 
         map = new Map(20,20);
         map.initMap();
-//        map.display(map);
-//        Map.consoleDraw();
-//        Master.shared().startGame();
         launch(HelloApplication.class, args);
     }
 

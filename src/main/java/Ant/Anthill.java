@@ -16,7 +16,7 @@ public class Anthill extends Thread {
 
     public Anthill(AnthillColor color , int x, int y) {
         this.workers = new ArrayList<>();
-        this.soldiers = new ArrayList<Ant_Soldier>();
+        this.soldiers = new ArrayList<>();
         this.resources = new ArrayList<>();
         this.color = color;
 
@@ -46,7 +46,7 @@ public class Anthill extends Thread {
 
 
     public void addRessouce(Resource r){
-        // TODO add ressource to anthill
+        this.resources.add(r);
     }
 
     public ArrayList<Ant_Soldier> getSoldiers() {

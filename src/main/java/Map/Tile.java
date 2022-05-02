@@ -26,7 +26,6 @@ public class Tile   {
         y = j;
         Ants = new ArrayList<Ant>();
         resources = new ArrayList<>();
-
            for (int k = 0; k < ThreadLocalRandom.current().nextInt(0, 50); k++) {
                Resource resource = new Resource(ResourceType.FOOD);
                resources.add(resource);
@@ -57,12 +56,7 @@ public class Tile   {
         }
     }
 
-    public void dropResource(Resource resource){
-        this.resources.add(resource);
-    }
-
-
-    public ArrayList<Resource> tile() {
+    public ArrayList<Resource> getResources() {
         return resources;
     }
 
@@ -170,7 +164,13 @@ public class Tile   {
         this.y = y;
     }
 
-    public void addResource(Resource resource) {
-        this.resources.add(resource);
+
+    // remove 1ere ressource
+    public void removeFirstResource(){
+        this.resources.remove(0);
+    }
+    // renvoie la 1er ressource
+    public Resource getFirstResource(){
+        return this.resources.get(0);
     }
 }

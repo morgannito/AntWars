@@ -8,9 +8,6 @@ public class Resource {
     public Resource(  ResourceType type ) {
         this.type = type;
     }
-//    public Resource(ResourceType type) {
-//        this.type = type;
-//    }
 
     public ResourceType getType() {
         return type;
