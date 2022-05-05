@@ -57,26 +57,28 @@ public abstract class Ant extends Thread{
 
 
 public void randomMove() {
-    int boundedRandomValue = ThreadLocalRandom.current().nextInt(0, 4);
-    try {
-
-        switch (boundedRandomValue) {
-            case 0:
-                Map.getInstance().moveTo(this, Map.getInstance().getBottomTile(this));
-                break;
-            case 1:
-                Map.getInstance().moveTo(this, Map.getInstance().getTopTile(this));
-                break;
-            case 2:
-                Map.getInstance().moveTo(this, Map.getInstance().getLeftTile(this));
-                break;
-            case 3:
-                Map.getInstance().moveTo(this, Map.getInstance().getRightTile(this));
-                break;
+        try {
+            synchronized (ThreadLocalRandom.current()) {
+                int boundedRandomValue = ThreadLocalRandom.current().nextInt(0, 4);
+                switch (boundedRandomValue) {
+                    case 0:
+                        Map.getInstance().moveTo(this, Map.getInstance().getBottomTile(this));
+                        break;
+                    case 1:
+                        Map.getInstance().moveTo(this, Map.getInstance().getTopTile(this));
+                        break;
+                    case 2:
+                        Map.getInstance().moveTo(this, Map.getInstance().getLeftTile(this));
+                        break;
+                    case 3:
+                        Map.getInstance().moveTo(this, Map.getInstance().getRightTile(this));
+                        break;
+                }
+            }
+        } catch (Exception e) {
+            randomMove();
         }
-    } catch (Exception e) {
-        randomMove();
-    }
+
 }
 
 

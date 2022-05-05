@@ -32,8 +32,8 @@ public class Ant_Worker extends Ant{
         while(true){
             try{
                 randomMove();
-                if(Map.getTiles()[this.getX()][this.getY()].getResources().size()>0 && this.ressouces.size()<5){
-                    System.out.println("worker found resource");
+                if(Map.getTiles()[this.getX()][this.getY()].getResources().size()>0 && this.ressouces.size()<1){
+//                    System.out.println("worker found resource");
                    Resource MyResource = Map.getTiles()[this.getX()][this.getY()].getFirstResource();
                     ressouces.add(MyResource);
                     Map.getTiles()[this.getX()][this.getY()].removeResource(MyResource);
@@ -46,13 +46,13 @@ public class Ant_Worker extends Ant{
                         Resource myResource = this.ressouces.get(0);
                         ressouces.remove(0);
                         myAnthill.addRessouce(myResource);
-                        System.out.println(myAnthill.getResources().size());
+//                        System.out.println(myAnthill.getResources().size());
                     }catch (Exception e){
-                        System.out.println("worker found anthill but no ressource");
+//                        System.out.println("worker found anthill but no ressource");
                     }
                 }
                 Thread.sleep(50);
-                System.out.println("Ant is moving " +this.getX()+" "+this.getY());
+//                System.out.println("Ant is moving " +this.getX()+" "+this.getY());
             }catch(InterruptedException e){
                 e.printStackTrace();
             }

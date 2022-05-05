@@ -12,6 +12,7 @@ import java.util.List;
 // c'est un singleton qui gere la map
 
 public  class Map {
+
     private static class LoadMap {
         static final Map INSTANCE = new Map();
     }
@@ -82,9 +83,9 @@ public  class Map {
         public void displayFx(GraphicsContext gfx){
             for (int i = 0; i < this.getHeight(); i++) {
                 for (int j = 0; j < this.getWidth(); j++) {
-                        tiles[i][j].displayFx(gfx);
+                    tiles[i][j].displayFx(gfx);
                     tiles[i][j].draw(gfx);
-                    }
+                }
             }
         }
 

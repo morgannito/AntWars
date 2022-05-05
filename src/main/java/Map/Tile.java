@@ -68,15 +68,17 @@ public class Tile   {
     }
 
     public void draw(GraphicsContext gc) {
-        if (Ants.size() > 0) {
-            for (Ant ant : Ants) {
-                // convertie la couleur de la fourmi en paint javafx
-                // transforme la couleur en string
-                String color = ant.getColor().toString();
-                // transforme la couleur en color javafx
-                Color antColor = Color.valueOf(color);
-                gc.setFill(antColor);
-                gc.fillOval(x * 40 + 15, y * 40 + 15, 10, 10);
+        synchronized (lock) {
+            if (Ants.size() > 0) {
+                for (Ant ant : Ants) {
+                    // convertie la couleur de la fourmi en paint javafx
+                    // transforme la couleur en string
+                    String color = ant.getColor().toString();
+                    // transforme la couleur en color javafx
+                    Color antColor = Color.valueOf(color);
+                    gc.setFill(antColor);
+                    gc.fillOval(x * 40 + 15, y * 40 + 15, 10, 10);
+                }
             }
         }
     }
@@ -165,18 +167,19 @@ public class Tile   {
     }
 
 
-    // remove 1ere ressource
-    public void removeFirstResource(){
-        this.resources.remove(0);
-    }
-
-
-    // renvoie la 1er ressource
     public Resource getFirstResource(){
-        return this.resources.get(0);
+        synchronized(lock){
+            if(!resources.isEmpty())
+                return resources.get(0);
+            else
+                return null;
+        }
     }
 
-    public void removeResource(Resource myResource) {
-        this.resources.remove(myResource);
+    public   void  removeResource(Resource myResource) {
+        synchronized(lock){
+            if(!resources.isEmpty())
+                 resources.remove(myResource);
+            }
     }
 }
