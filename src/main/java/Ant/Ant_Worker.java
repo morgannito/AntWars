@@ -32,24 +32,25 @@ public class Ant_Worker extends Ant{
         while(true){
             try{
                 randomMove();
-
-                if(Map.getTiles()[this.getX()][this.getY()].getResources().size()>0 && this.ressouces.size()<1){
+                if(Map.getTiles()[this.getX()][this.getY()].getResources().size()>0 && this.ressouces.size()<5){
                     System.out.println("worker found resource");
                    Resource MyResource = Map.getTiles()[this.getX()][this.getY()].getFirstResource();
-                    Map.getTiles()[this.getX()][this.getY()].removeFirstResource();
+                    ressouces.add(MyResource);
+                    Map.getTiles()[this.getX()][this.getY()].removeResource(MyResource);
                 }
 
                 if (Map.getTiles()[this.getX()][this.getY()].getAnthill() != null) {
-                    System.out.println("worker found anthill");
+//                    System.out.println("worker found anthill");
                     try {
                         Anthill myAnthill = Map.getTiles()[this.getX()][this.getY()].getAnthill();
-                        myAnthill.addRessouce(this.ressouces.get(0));
+                        Resource myResource = this.ressouces.get(0);
+                        ressouces.remove(0);
+                        myAnthill.addRessouce(myResource);
+                        System.out.println(myAnthill.getResources().size());
                     }catch (Exception e){
                         System.out.println("worker found anthill but no ressource");
                     }
                 }
-
-
                 Thread.sleep(50);
                 System.out.println("Ant is moving " +this.getX()+" "+this.getY());
             }catch(InterruptedException e){

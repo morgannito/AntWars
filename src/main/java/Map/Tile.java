@@ -169,8 +169,14 @@ public class Tile   {
     public void removeFirstResource(){
         this.resources.remove(0);
     }
+
+
     // renvoie la 1er ressource
     public Resource getFirstResource(){
         return this.resources.get(0);
+    }
+
+    public void removeResource(Resource myResource) {
+        this.resources.remove(myResource);
     }
 }
