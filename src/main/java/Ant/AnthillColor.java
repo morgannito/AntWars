@@ -1,7 +1,5 @@
 package Ant;
 
-import javafx.scene.paint.Paint;
-
 public enum AnthillColor {
-    RED,BLUE,GREEN, YELLOW
+    RED, BLUE, GREEN, YELLOW
 }

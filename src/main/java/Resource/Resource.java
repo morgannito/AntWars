@@ -5,7 +5,7 @@ public class Resource {
     protected ResourceType type;
 
 
-    public Resource(  ResourceType type ) {
+    public Resource(ResourceType type) {
         this.type = type;
     }
 

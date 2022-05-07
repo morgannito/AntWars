@@ -1,22 +1,20 @@
 package Map;
-import Ant.*;
-import Map.*;
-import Resource.*;
-import javafx.scene.canvas.GraphicsContext;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import Ant.Ant;
+import Ant.Anthill;
+import javafx.scene.canvas.GraphicsContext;
 
 
 // c'est un singleton qui gere la map
 
-public  class Map {
+public class Map {
 
     private static class LoadMap {
         static final Map INSTANCE = new Map();
     }
-    private Map() {}
+
+    private Map() {
+    }
 
     public static Map getInstance() {
         return LoadMap.INSTANCE;
@@ -43,8 +41,9 @@ public  class Map {
     protected int height;
     protected static Tile[][] tiles;
     protected static Anthill[] anthills;
+
     // constructeur
-    public Map(int width, int height){
+    public Map(int width, int height) {
         this.width = width;
         this.height = height;
     }
@@ -54,7 +53,7 @@ public  class Map {
     }
 
     public void setTiles(Tile[][] tiles) {
-        this.tiles = tiles;
+        Map.tiles = tiles;
     }
 
     public void initMap() {
@@ -68,8 +67,6 @@ public  class Map {
     }
 
 
-
-
     public void display(Map map) {
         for (int i = 0; i < map.getHeight(); i++) {
             for (int j = 0; j < map.getWidth(); j++) {
@@ -80,35 +77,39 @@ public  class Map {
         }
     }
 
-        public void displayFx(GraphicsContext gfx){
-            for (int i = 0; i < this.getHeight(); i++) {
-                for (int j = 0; j < this.getWidth(); j++) {
-                    tiles[i][j].displayFx(gfx);
-                    tiles[i][j].draw(gfx);
-                }
+    public void displayFx(GraphicsContext gfx) {
+        for (int i = 0; i < this.getHeight(); i++) {
+            for (int j = 0; j < this.getWidth(); j++) {
+                tiles[i][j].displayFx(gfx);
+                tiles[i][j].draw(gfx);
             }
         }
+    }
 
-    public Tile getTile(Ant ant){
+    public Tile getTile(Ant ant) {
         return tiles[ant.getX()][ant.getY()];
     }
-    public void moveTo(Ant ant, Tile tile){
+
+    public void moveTo(Ant ant, Tile tile) {
         tiles[ant.getX()][ant.getY()].removeAnt(ant);
         ant.setX(tile.getX());
         ant.setY(tile.getY());
         tile.addAnt(ant);
     }
-    public Tile getTopTile(Ant ant){
-        return tiles[ant.getX()][ant.getY()-1];
+
+    public Tile getTopTile(Ant ant) {
+        return tiles[ant.getX()][ant.getY() - 1];
     }
 
-    public Tile getBottomTile(Ant ant){
-        return tiles[ant.getX()][ant.getY()+1];
+    public Tile getBottomTile(Ant ant) {
+        return tiles[ant.getX()][ant.getY() + 1];
     }
-    public Tile getLeftTile(Ant ant){
-        return tiles[ant.getX()-1][ant.getY()];
+
+    public Tile getLeftTile(Ant ant) {
+        return tiles[ant.getX() - 1][ant.getY()];
     }
-    public Tile getRightTile(Ant ant){
-        return tiles[ant.getX()+1][ant.getY()];
+
+    public Tile getRightTile(Ant ant) {
+        return tiles[ant.getX() + 1][ant.getY()];
     }
 }

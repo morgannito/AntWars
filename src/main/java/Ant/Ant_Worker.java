@@ -1,15 +1,14 @@
 package Ant;
 
+import Map.Map;
 import Resource.Resource;
 import javafx.beans.Observable;
-import Map.*;
-
 
 import java.util.ArrayList;
 
-public class Ant_Worker extends Ant{
+public class Ant_Worker extends Ant {
 
-     protected ArrayList<Resource> ressouces;
+    protected ArrayList<Resource> ressouces;
 
     public Ant_Worker(AnthillColor color, int x, int y) {
         super(color, x, y);
@@ -21,20 +20,19 @@ public class Ant_Worker extends Ant{
     }
 
 
-
     public void addObserver(Observable o) {
 
     }
 
 
     @Override
-    public  void run(){
-        while(true){
-            try{
+    public void run() {
+        while (true) {
+            try {
                 randomMove();
-                if(Map.getTiles()[this.getX()][this.getY()].getResources().size()>0 && this.ressouces.size()<1){
+                if (Map.getTiles()[this.getX()][this.getY()].getResources().size() > 0 && this.ressouces.size() < 1) {
 //                    System.out.println("worker found resource");
-                   Resource MyResource = Map.getTiles()[this.getX()][this.getY()].getFirstResource();
+                    Resource MyResource = Map.getTiles()[this.getX()][this.getY()].getFirstResource();
                     ressouces.add(MyResource);
                     Map.getTiles()[this.getX()][this.getY()].removeResource(MyResource);
                 }
@@ -47,18 +45,17 @@ public class Ant_Worker extends Ant{
                         ressouces.remove(0);
                         myAnthill.addRessouce(myResource);
 //                        System.out.println(myAnthill.getResources().size());
-                    }catch (Exception e){
+                    } catch (Exception e) {
 //                        System.out.println("worker found anthill but no ressource");
                     }
                 }
                 Thread.sleep(50);
 //                System.out.println("Ant is moving " +this.getX()+" "+this.getY());
-            }catch(InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
-
 
 
 }

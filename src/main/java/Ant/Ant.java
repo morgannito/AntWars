@@ -2,17 +2,17 @@ package Ant;
 
 import Map.Map;
 import Resource.Resource;
-import javafx.scene.paint.Paint;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class Ant extends Thread{
+public abstract class Ant extends Thread {
 
     protected boolean isInjured;
     protected int x;
     protected int y;
     public AnthillColor color;
+
     protected Ant(AnthillColor color, int x, int y) {
         this.x = x;
         this.y = y;
@@ -43,20 +43,20 @@ public abstract class Ant extends Thread{
 
 
     @Override
-    public  void run(){
-        while(true){
-            try{
+    public void run() {
+        while (true) {
+            try {
                 randomMove();
                 Thread.sleep(50);
 //                System.out.println("Ant is moving " +this.getX()+" "+this.getY());
-            }catch(InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-    };
+    }
 
 
-public void randomMove() {
+    public void randomMove() {
         try {
             synchronized (ThreadLocalRandom.current()) {
                 int boundedRandomValue = ThreadLocalRandom.current().nextInt(0, 4);
@@ -79,7 +79,7 @@ public void randomMove() {
             randomMove();
         }
 
-}
+    }
 
 
     public int getX() {

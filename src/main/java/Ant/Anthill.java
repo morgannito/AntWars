@@ -1,7 +1,6 @@
 package Ant;
 
 import Resource.Resource;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ public class Anthill extends Thread {
     protected AnthillColor color;
 
 
-    public Anthill(AnthillColor color , int x, int y) {
+    public Anthill(AnthillColor color, int x, int y) {
         this.workers = new ArrayList<>();
         this.soldiers = new ArrayList<>();
         this.resources = new ArrayList<>();
@@ -33,9 +32,9 @@ public class Anthill extends Thread {
         }
     }
 
-    public void run(){
+    public void run() {
         // TODO run anthill
-        while (true){
+        while (true) {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
@@ -45,7 +44,7 @@ public class Anthill extends Thread {
     }
 
 
-    public void addRessouce(Resource r){
+    public void addRessouce(Resource r) {
         this.resources.add(r);
     }
 
@@ -57,11 +56,12 @@ public class Anthill extends Thread {
         this.soldiers = soldiers;
     }
 
-    public int getScore(){
+    public int getScore() {
         // TODO return score
         return 0;
-    };
-    public Ant killAnt(Ant a){
+    }
+
+    public Ant killAnt(Ant a) {
         // TODO kill ant
         return null;
     }
@@ -73,6 +73,7 @@ public class Anthill extends Thread {
     public void setWorkers(ArrayList<Ant_Worker> workers) {
         this.workers = workers;
     }
+
     public AnthillColor getColor() {
         return color;
     }
