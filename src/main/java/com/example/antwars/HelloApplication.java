@@ -10,6 +10,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 
+import java.time.Duration;
+
 
 public class HelloApplication extends Application {
 
@@ -36,13 +38,21 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root, 800, 800);
         stage.setScene(scene);
         stage.show();
+        // get timestamp
+        long start = System.nanoTime();
+        long duration = Duration.ofMinutes(2).toNanos();
         // crée une instance de l'animation
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                // dessine le canvas
-                map.displayFx(gc);
-                map.displayAnt(gc);
+                // stop la partie au bout de 2 minutes
+                if (now>duration+start) {
+                    this.stop();
+                }else {
+                    // dessine le canvas
+                    map.displayFx(gc);
+                    map.displayAnt(gc);
+                }
             }
         };
         // démarre l'animation
