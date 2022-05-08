@@ -73,8 +73,7 @@ public class Tile {
             if (Ants.size() > 0) {
                 for (Ant ant : Ants) {
                     // convertie la couleur de la fourmi en paint javafx
-                    gc.setFill(Color.valueOf(ant.getColor().toString()));
-                    gc.fillOval(x * 40 + 15, y * 40 + 15, 10, 10);
+                    gc.drawImage(ant.antImage, x * 40 + 15, y * 40 + 15, 10, 10);
                 }
             }
         }

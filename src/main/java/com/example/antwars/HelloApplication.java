@@ -48,7 +48,6 @@ public class HelloApplication extends Application {
                 // stop la partie au bout de 2 minutes
                 if (now>duration+start) {
                     this.stop();
-                // dessine le canvas de fin de partie si la partie est terminée
                 }else {
                     // dessine le canvas
                     map.displayFx(gc);
