@@ -7,6 +7,7 @@ import Resource.Resource;
 import Resource.ResourceType;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.TextAlignment;
@@ -20,6 +21,9 @@ public class Tile {
     ArrayList<Resource> resources;
     ArrayList<Ant> Ants;
     Anthill anthill;
+
+    static Image grass = new Image("grass_alt1.png");
+
 
     final Object lock = new Object();
 
@@ -69,13 +73,8 @@ public class Tile {
             if (Ants.size() > 0) {
                 for (Ant ant : Ants) {
                     // convertie la couleur de la fourmi en paint javafx
-                    // transforme la couleur en string
-                    String color = ant.getColor().toString();
-                    // transforme la couleur en color javafx
-                    Color antColor = Color.valueOf(color);
-                    gc.setFill(antColor);
+                    gc.setFill(Color.valueOf(ant.getColor().toString()));
                     gc.fillOval(x * 40 + 15, y * 40 + 15, 10, 10);
-
                 }
             }
         }
@@ -87,23 +86,26 @@ public class Tile {
             gfx.setFont(new javafx.scene.text.Font(10));
             float taille = 40;
             gfx.clearRect(x * taille, y * taille, taille, taille);
-            try {
-                if (this.anthill.getColor() != null) {
-                    drawAnthill(gfx, taille,  anthill);
-                }
-            } catch (Exception e) {
-                // mais une image de fond
-                gfx.setFill(Color.GREEN);
-                gfx.fillRect(x * taille, y * taille, taille, taille);
-                gfx.setLineWidth(0.5);
-                gfx.setTextAlign(TextAlignment.CENTER);
-                gfx.setTextBaseline(VPos.CENTER);
-                gfx.setFill(Color.BLACK);
-                gfx.fillText(this.resources.size() + "", x * taille + 5, y * taille + 5);
-                gfx.setStroke(Color.BLACK);
-                gfx.strokeRect(x * taille, y * taille, taille, taille);
+            if (anthill != null) {
+                drawAnthill(gfx, taille,  anthill);
+            }else {
+                drawResources(gfx, taille);
             }
         }
+    }
+
+    private void drawResources(GraphicsContext gfx, float taille) {
+        // met une image sur la grille
+         gfx.drawImage(grass, x * taille, y * taille, taille, taille);
+//        gfx.setFill(Color.GREEN);
+//        gfx.fillRect(x * taille, y * taille, taille, taille);
+        gfx.setLineWidth(0.5);
+//        gfx.setTextAlign(TextAlignment.CENTER);
+//        gfx.setTextBaseline(VPos.CENTER);
+//        gfx.setFill(Color.BLACK);
+        gfx.fillText(this.resources.size() + "", x * taille + 5, y * taille + 5);
+        gfx.setStroke(Color.BLACK);
+        gfx.strokeRect(x * taille, y * taille, taille, taille);
     }
 
     public int getX() {
