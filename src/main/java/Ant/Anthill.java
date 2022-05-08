@@ -20,7 +20,7 @@ public class Anthill extends Thread {
         this.resources = new ArrayList<>();
         this.color = color;
 
-        for (int i = 0; i < 5000; i++) {
+        for (int i = 0; i < 50; i++) {
             Ant_Worker w = new Ant_Worker(color, x, y);
             workers.add(w);
             w.start();

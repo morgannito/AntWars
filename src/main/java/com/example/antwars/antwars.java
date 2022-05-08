@@ -14,9 +14,6 @@ import java.time.Duration;
 
 
 public class antwars extends Application {
-
-    static Map map;
-
     public static void main(String[] args) {
         launch(antwars.class, args);
     }

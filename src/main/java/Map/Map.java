@@ -14,8 +14,8 @@ public class Map {
     }
 
     private Map() {
-        this.width = 20;
-        this.height = 20;
+        this.width = 500;
+        this.height = 500;
         initMap();
     }
 
