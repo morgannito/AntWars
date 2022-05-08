@@ -6,8 +6,10 @@ import Ant.AnthillColor;
 import Resource.Resource;
 import Resource.ResourceType;
 import javafx.geometry.VPos;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.TextAlignment;
@@ -72,8 +74,13 @@ public class Tile {
         synchronized (lock) {
             if (Ants.size() > 0) {
                 for (Ant ant : Ants) {
-                    // convertie la couleur de la fourmi en paint javafx
-                    gc.drawImage(ant.antImage, x * 40 + 15, y * 40 + 15, 10, 10);
+                    // faire une rotation de l'image en fonction du mouvement de l'ant
+                    ImageView iv = new ImageView(ant.antImage);
+                    iv.setRotate(ant.lastMove);
+                    SnapshotParameters params = new SnapshotParameters();
+                    params.setFill(Color.TRANSPARENT);
+                    Image rotatedImage = iv.snapshot(params, null);
+                    gc.drawImage(rotatedImage, x * 40 + 15, y * 40 + 15, 10, 10);
                 }
             }
         }

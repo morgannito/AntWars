@@ -13,10 +13,11 @@ public abstract class Ant extends Thread {
     protected int x;
     protected int y;
     public AnthillColor color;
-
     public int anthillsX;
     public int anthillsY;
     public Image antImage;
+
+    public int lastMove;
 
     protected Ant(AnthillColor color, int x, int y) {
         this.x = x;
@@ -75,15 +76,19 @@ public abstract class Ant extends Thread {
                 int boundedRandomValue = ThreadLocalRandom.current().nextInt(0, 4);
                 switch (boundedRandomValue) {
                     case 0:
+                        lastMove = 180;
                         Map.getInstance().moveTo(this, Map.getInstance().getBottomTile(this));
                         break;
                     case 1:
+                        lastMove = 0;
                         Map.getInstance().moveTo(this, Map.getInstance().getTopTile(this));
                         break;
                     case 2:
+                        lastMove = 270 ;
                         Map.getInstance().moveTo(this, Map.getInstance().getLeftTile(this));
                         break;
                     case 3:
+                        lastMove = 90;
                         Map.getInstance().moveTo(this, Map.getInstance().getRightTile(this));
                         break;
                 }
