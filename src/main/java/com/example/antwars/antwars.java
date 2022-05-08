@@ -13,14 +13,12 @@ import javafx.stage.Stage;
 import java.time.Duration;
 
 
-public class HelloApplication extends Application {
+public class antwars extends Application {
 
     static Map map;
 
     public static void main(String[] args) {
-        map = new Map(20, 20);
-        map.initMap();
-        launch(HelloApplication.class, args);
+        launch(antwars.class, args);
     }
 
     @Override
@@ -50,8 +48,8 @@ public class HelloApplication extends Application {
                     this.stop();
                 }else {
                     // dessine le canvas
-                    map.displayFx(gc);
-                    map.displayAnt(gc);
+                    Map.getInstance().displayFx(gc);
+                    Map.getInstance().displayAnt(gc);
                 }
             }
         };

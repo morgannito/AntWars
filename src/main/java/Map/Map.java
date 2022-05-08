@@ -14,6 +14,9 @@ public class Map {
     }
 
     private Map() {
+        this.width = 20;
+        this.height = 20;
+        initMap();
     }
 
     public static Map getInstance() {
@@ -41,12 +44,6 @@ public class Map {
     protected int height;
     protected static Tile[][] tiles;
     protected static Anthill[] anthills;
-
-    // constructeur
-    public Map(int width, int height) {
-        this.width = width;
-        this.height = height;
-    }
 
     public static Tile[][] getTiles() {
         return tiles;

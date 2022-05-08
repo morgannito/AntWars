@@ -30,10 +30,10 @@ public class Ant_Worker extends Ant {
         while (true) {
             try {
                 // deposer une ressource si elle est sur la case anthill
-                if (Map.getTiles()[this.getX()][this.getY()].getAnthill() != null && this.ressouces.size() > 0) {
+                if (Map.getInstance().getTiles()[this.getX()][this.getY()].getAnthill() != null && this.ressouces.size() > 0) {
 //                    System.out.println("worker found anthill");
                     try {
-                        Anthill myAnthill = Map.getTiles()[this.getX()][this.getY()].getAnthill();
+                        Anthill myAnthill = Map.getInstance().getTiles()[this.getX()][this.getY()].getAnthill();
                         Resource myResource = this.ressouces.get(0);
                         ressouces.remove(0);
                         myAnthill.addRessouce(myResource);
@@ -67,7 +67,7 @@ public class Ant_Worker extends Ant {
                     }
                 }
 
-                Thread.sleep(1000);
+                Thread.sleep(50);
 //                System.out.println("Ant is moving " +this.getX()+" "+this.getY());
             } catch (InterruptedException e) {
                 e.printStackTrace();
