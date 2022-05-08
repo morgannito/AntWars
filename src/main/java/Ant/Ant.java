@@ -13,12 +13,18 @@ public abstract class Ant extends Thread {
     protected int y;
     public AnthillColor color;
 
+    public int anthillsX;
+    public int anthillsY;
+
+
     protected Ant(AnthillColor color, int x, int y) {
         this.x = x;
         this.y = y;
 
         this.color = color;
         this.isInjured = false;
+        anthillsX = x;
+        anthillsY = y;
     }
 
     ArrayList<Resource> kill() {

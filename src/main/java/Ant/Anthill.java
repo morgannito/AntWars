@@ -20,24 +20,24 @@ public class Anthill extends Thread {
         this.resources = new ArrayList<>();
         this.color = color;
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 1; i++) {
             Ant_Worker w = new Ant_Worker(color, x, y);
             workers.add(w);
             w.start();
         }
 
-        for (int i = 0; i < 5; i++) {
-            Ant_Soldier w = new Ant_Soldier(color, x, y);
-            soldiers.add(w);
-            w.start();
-        }
+//        for (int i = 0; i < 5; i++) {
+//            Ant_Soldier w = new Ant_Soldier(color, x, y);
+//            soldiers.add(w);
+//            w.start();
+//        }
     }
 
     public void run() {
         // TODO run anthill
         while (true) {
             try {
-                Thread.sleep(10);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
