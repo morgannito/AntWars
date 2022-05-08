@@ -8,6 +8,7 @@ import Resource.ResourceType;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
@@ -84,45 +85,14 @@ public class Tile {
         synchronized (lock) {
             // adapte la taille de la grille en fonction de la taille de la fenetre
             gfx.setFont(new javafx.scene.text.Font(10));
-            gfx.setTextAlign(TextAlignment.CENTER);
-            gfx.setTextBaseline(VPos.CENTER);
             float taille = 40;
+            gfx.clearRect(x * taille, y * taille, taille, taille);
             try {
-                if (this.anthill.getColor() == AnthillColor.BLUE) {
-                    gfx.setFill(Color.BLUE);
-                    gfx.fillRect(x * taille, y * taille, taille, taille);
-                    gfx.setLineWidth(0.5);
-                    gfx.setTextAlign(TextAlignment.CENTER);
-                    gfx.setTextBaseline(VPos.CENTER);
-                    gfx.setFill(Color.BLACK);
-                    gfx.fillText(anthill.getResources().size() + "", x * taille + 5, y * taille + 5);
-                    gfx.setStroke(Color.BLACK);
-                    gfx.strokeRect(x * taille, y * taille, taille, taille);
-                }
-                if (this.anthill.getColor() == AnthillColor.RED) {
-                    gfx.setFill(Color.RED);
-                    gfx.fillRect(x * taille, y * taille, taille, taille);
-                    gfx.setLineWidth(0.5);
-                    gfx.setTextAlign(TextAlignment.CENTER);
-                    gfx.setTextBaseline(VPos.CENTER);
-                    gfx.setFill(Color.BLACK);
-                    gfx.fillText(anthill.getResources().size() + "", x * taille + 5, y * taille + 5);
-                    gfx.setStroke(Color.BLACK);
-                    gfx.strokeRect(x * taille, y * taille, taille, taille);
-                }
-                if (this.anthill.getColor() == AnthillColor.YELLOW) {
-                    gfx.setFill(Color.YELLOW);
-                    gfx.fillRect(x * taille, y * taille, taille, taille);
-                    gfx.setLineWidth(0.5);
-                    gfx.setTextAlign(TextAlignment.CENTER);
-                    gfx.setTextBaseline(VPos.CENTER);
-                    gfx.setFill(Color.BLACK);
-                    gfx.fillText(anthill.getResources().size() + "", x * taille + 5, y * taille + 5);
-                    gfx.setStroke(Color.BLACK);
-                    gfx.strokeRect(x * taille, y * taille, taille, taille);
+                if (this.anthill.getColor() != null) {
+                    drawAnthill(gfx, taille,  anthill);
                 }
             } catch (Exception e) {
-
+                // mais une image de fond
                 gfx.setFill(Color.GREEN);
                 gfx.fillRect(x * taille, y * taille, taille, taille);
                 gfx.setLineWidth(0.5);
@@ -167,5 +137,17 @@ public class Tile {
             if (!resources.isEmpty())
                 resources.remove(myResource);
         }
+    }
+
+    public void drawAnthill(GraphicsContext gfx , float taille , Anthill anthill) {
+        gfx.setFill(Paint.valueOf(anthill.getColor().toString()));
+        gfx.fillRect(x * taille, y * taille, taille, taille);
+        gfx.setLineWidth(0.5);
+        gfx.setTextAlign(TextAlignment.CENTER);
+        gfx.setTextBaseline(VPos.CENTER);
+        gfx.setFill(Color.BLACK);
+        gfx.fillText(anthill.getResources().size() + "", x * taille + (taille / 2), y * taille + (taille / 2));
+        gfx.setStroke(Color.BLACK);
+        gfx.strokeRect(x * taille, y * taille, taille, taille);
     }
 }

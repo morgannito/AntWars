@@ -16,7 +16,6 @@ public class HelloApplication extends Application {
     static Map map;
 
     public static void main(String[] args) {
-
         map = new Map(20, 20);
         map.initMap();
         launch(HelloApplication.class, args);
@@ -24,8 +23,6 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) {
-        // utilise la mémoire gpu pour optimiser le rendu
-
         System.setProperty("prism.forceGPU", "true");
         System.setProperty("prism.order", "d3d,sw");
         Group root = new Group();
@@ -39,10 +36,6 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root, 800, 800);
         stage.setScene(scene);
         stage.show();
-
-        // init la map
-
-
         // crée une instance de l'animation
         AnimationTimer timer = new AnimationTimer() {
             @Override
