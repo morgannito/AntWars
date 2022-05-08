@@ -1,6 +1,7 @@
 package Ant;
 
 import Resource.Resource;
+import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
 
@@ -89,4 +90,5 @@ public class Anthill extends Thread {
     public void setResources(ArrayList<Resource> resources) {
         this.resources = resources;
     }
+
 }

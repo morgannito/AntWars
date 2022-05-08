@@ -31,22 +31,25 @@ public class HelloApplication extends Application {
         Group root = new Group();
         root.setCache(true);
         root.setCacheHint(CacheHint.SPEED);
+
         Canvas canvas = new Canvas(800, 800);
         root.getChildren().add(canvas);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-
         // crée une scène
         Scene scene = new Scene(root, 800, 800);
         stage.setScene(scene);
         stage.show();
+
+        // init la map
+
 
         // crée une instance de l'animation
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 // dessine le canvas
-                gc.clearRect(0, 0, 800, 800);
                 map.displayFx(gc);
+                map.displayAnt(gc);
             }
         };
         // démarre l'animation

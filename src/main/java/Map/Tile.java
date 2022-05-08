@@ -50,7 +50,6 @@ public class Tile {
     public void addAnt(Ant ant) {
         synchronized (lock) {
             Ants.add(ant);
-
         }
     }
 
@@ -64,14 +63,7 @@ public class Tile {
         return resources;
     }
 
-    public void setResources(ArrayList<Resource> resources) {
-        this.resources = resources;
-    }
-
-    public void drawBackground(GraphicsContext gc) {
-    }
-
-    public void draw(GraphicsContext gc) {
+    public void drawAnt(GraphicsContext gc) {
         synchronized (lock) {
             if (Ants.size() > 0) {
                 for (Ant ant : Ants) {
@@ -91,10 +83,10 @@ public class Tile {
     public void displayFx(GraphicsContext gfx) {
         synchronized (lock) {
             // adapte la taille de la grille en fonction de la taille de la fenetre
-            gfx.setFont(new javafx.scene.text.Font(20));
+            gfx.setFont(new javafx.scene.text.Font(10));
             gfx.setTextAlign(TextAlignment.CENTER);
             gfx.setTextBaseline(VPos.CENTER);
-            int taille = 40;
+            float taille = 40;
             try {
                 if (this.anthill.getColor() == AnthillColor.BLUE) {
                     gfx.setFill(Color.BLUE);
@@ -103,11 +95,7 @@ public class Tile {
                     gfx.setTextAlign(TextAlignment.CENTER);
                     gfx.setTextBaseline(VPos.CENTER);
                     gfx.setFill(Color.BLACK);
-                    gfx.fillText(
-                            anthill.getResources().size() + "",
-                            x * taille + 5,
-                            y * taille + 5
-                    );
+                    gfx.fillText(anthill.getResources().size() + "", x * taille + 5, y * taille + 5);
                     gfx.setStroke(Color.BLACK);
                     gfx.strokeRect(x * taille, y * taille, taille, taille);
                 }
@@ -115,15 +103,10 @@ public class Tile {
                     gfx.setFill(Color.RED);
                     gfx.fillRect(x * taille, y * taille, taille, taille);
                     gfx.setLineWidth(0.5);
-
                     gfx.setTextAlign(TextAlignment.CENTER);
                     gfx.setTextBaseline(VPos.CENTER);
                     gfx.setFill(Color.BLACK);
-                    gfx.fillText(
-                            anthill.getResources().size() + "",
-                            x * taille + 5,
-                            y * taille + 5
-                    );
+                    gfx.fillText(anthill.getResources().size() + "", x * taille + 5, y * taille + 5);
                     gfx.setStroke(Color.BLACK);
                     gfx.strokeRect(x * taille, y * taille, taille, taille);
                 }
@@ -131,30 +114,22 @@ public class Tile {
                     gfx.setFill(Color.YELLOW);
                     gfx.fillRect(x * taille, y * taille, taille, taille);
                     gfx.setLineWidth(0.5);
-
                     gfx.setTextAlign(TextAlignment.CENTER);
                     gfx.setTextBaseline(VPos.CENTER);
                     gfx.setFill(Color.BLACK);
-                    gfx.fillText(
-                            anthill.getResources().size() + "",
-                            x * taille + 5,
-                            y * taille + 5
-                    );
+                    gfx.fillText(anthill.getResources().size() + "", x * taille + 5, y * taille + 5);
                     gfx.setStroke(Color.BLACK);
                     gfx.strokeRect(x * taille, y * taille, taille, taille);
                 }
             } catch (Exception e) {
+
                 gfx.setFill(Color.GREEN);
                 gfx.fillRect(x * taille, y * taille, taille, taille);
                 gfx.setLineWidth(0.5);
                 gfx.setTextAlign(TextAlignment.CENTER);
                 gfx.setTextBaseline(VPos.CENTER);
                 gfx.setFill(Color.BLACK);
-                gfx.fillText(
-                        this.resources.size() + "",
-                        x * taille + 5,
-                        y * taille + 5
-                );
+                gfx.fillText(this.resources.size() + "", x * taille + 5, y * taille + 5);
                 gfx.setStroke(Color.BLACK);
                 gfx.strokeRect(x * taille, y * taille, taille, taille);
             }

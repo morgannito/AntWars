@@ -81,11 +81,18 @@ public class Map {
         for (int i = 0; i < this.getHeight(); i++) {
             for (int j = 0; j < this.getWidth(); j++) {
                 tiles[i][j].displayFx(gfx);
-                tiles[i][j].draw(gfx);
             }
         }
     }
 
+
+    public void displayAnt(GraphicsContext gfx) {
+        for (int i = 0; i < this.getHeight(); i++) {
+            for (int j = 0; j < this.getWidth(); j++) {
+                tiles[i][j].drawAnt(gfx);
+            }
+        }
+    }
     public Tile getTile(Ant ant) {
         return tiles[ant.getX()][ant.getY()];
     }
