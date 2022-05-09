@@ -32,6 +32,7 @@ public class antwars extends Application {
         // crée une scène
         Scene scene = new Scene(root, 800, 800);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         // get timestamp
         long start = System.nanoTime();

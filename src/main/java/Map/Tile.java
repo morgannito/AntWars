@@ -24,6 +24,8 @@ public class Tile {
     ArrayList<Ant> Ants;
     Anthill anthill;
 
+    float taille;
+
     static Image grass = new Image("grass_alt1.png");
 
 
@@ -33,6 +35,7 @@ public class Tile {
     public Tile(int i, int j) {
         x = i;
         y = j;
+        taille = 40;
         Ants = new ArrayList<Ant>();
         resources = new ArrayList<>();
         for (int k = 0; k < ThreadLocalRandom.current().nextInt(0, 50); k++) {
@@ -80,7 +83,7 @@ public class Tile {
                     SnapshotParameters params = new SnapshotParameters();
                     params.setFill(Color.TRANSPARENT);
                     Image rotatedImage = iv.snapshot(params, null);
-                    gc.drawImage(rotatedImage, x * 40 + 15, y * 40 + 15, 10, 10);
+                    gc.drawImage(rotatedImage, x * taille + 15, y * taille + 15, 10, 10);
                 }
             }
         }
@@ -90,17 +93,16 @@ public class Tile {
         synchronized (lock) {
             // adapte la taille de la grille en fonction de la taille de la fenetre
             gfx.setFont(new javafx.scene.text.Font(10));
-            float taille = 40;
             gfx.clearRect(x * taille, y * taille, taille, taille);
             if (anthill != null) {
-                drawAnthill(gfx, taille,  anthill);
+                drawAnthill(gfx,anthill);
             }else {
-                drawResources(gfx, taille);
+                drawResources(gfx);
             }
         }
     }
 
-    private void drawResources(GraphicsContext gfx, float taille) {
+    private void drawResources(GraphicsContext gfx) {
         // met une image sur la grille
          gfx.drawImage(grass, x * taille, y * taille, taille, taille);
 //        gfx.setFill(Color.GREEN);
@@ -147,7 +149,7 @@ public class Tile {
         }
     }
 
-    public void drawAnthill(GraphicsContext gfx , float taille , Anthill anthill) {
+    public void drawAnthill(GraphicsContext gfx , Anthill anthill) {
         gfx.setFill(Paint.valueOf(anthill.getColor().toString()));
         gfx.fillRect(x * taille, y * taille, taille, taille);
         gfx.setLineWidth(0.5);
