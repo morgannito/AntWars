@@ -29,49 +29,53 @@ public class Ant_Worker extends Ant {
     public void run() {
         while (true) {
             try {
-                // deposer une ressource si elle est sur la case anthill
                 if (Map.getInstance().getTiles()[this.getX()][this.getY()].getAnthill() != null && this.ressouces.size() > 0) {
 //                    System.out.println("worker found anthill");
-                    try {
-                        Anthill myAnthill = Map.getInstance().getTiles()[this.getX()][this.getY()].getAnthill();
-                        Resource myResource = this.ressouces.get(0);
-                        ressouces.remove(0);
-                        myAnthill.addRessouce(myResource);
-//                        System.out.println(myAnthill.getResources().size());
-                    } catch (Exception e) {
-//                        System.out.println("worker found anthill but no ressource");
-                    }
+                        doneRessource();
                 }else {
                     if (ressouces.size() > 4) {
-                        if (x > anthillsX) {
-                            Map.getInstance().moveTo(this, Map.getInstance().getLeftTile(this));
-                        } else if (x < anthillsX) {
-                            Map.getInstance().moveTo(this, Map.getInstance().getRightTile(this));
-
-                        } else if (y > anthillsY) {
-                            Map.getInstance().moveTo(this, Map.getInstance().getTopTile(this));
-
-                        } else if (y < anthillsY) {
-                            Map.getInstance().moveTo(this, Map.getInstance().getBottomTile(this));
-                        }
+                        moveToAnthills();
                     } else {
                         randomMove();
                     }
-
-                    // prend une ressource si elle est sur la case et si il n'a pas deja une ressource sur elle
                     if (Map.getTiles()[this.getX()][this.getY()].getResources().size() > 0 && this.ressouces.size() < 5) {
-//                    System.out.println("worker found resource");
-                        Resource MyResource = Map.getTiles()[this.getX()][this.getY()].getFirstResource();
-                        ressouces.add(MyResource);
-                        Map.getTiles()[this.getX()][this.getY()].removeResource(MyResource);
+                    takeRessource();
                     }
                 }
-
                 Thread.sleep(50);
 //                System.out.println("Ant is moving " +this.getX()+" "+this.getY());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+
+    // prend une ressource si elle est sur la case et s'il n'y a pas deja 5 ressources sur elle
+    public void takeRessource() {
+        Resource MyResource = Map.getTiles()[this.getX()][this.getY()].getFirstResource();
+        ressouces.add(MyResource);
+        Map.getTiles()[this.getX()][this.getY()].removeResource(MyResource);
+    }
+
+    public void doneRessource() {
+        Anthill myAnthill = Map.getInstance().getTiles()[this.getX()][this.getY()].getAnthill();
+        Resource myResource = this.ressouces.get(0);
+        ressouces.remove(0);
+        myAnthill.addRessouce(myResource);
+    }
+
+    public void moveToAnthills() {
+        if (x > anthillsX) {
+            Map.getInstance().moveTo(this, Map.getInstance().getLeftTile(this));
+        } else if (x < anthillsX) {
+            Map.getInstance().moveTo(this, Map.getInstance().getRightTile(this));
+
+        } else if (y > anthillsY) {
+            Map.getInstance().moveTo(this, Map.getInstance().getTopTile(this));
+
+        } else if (y < anthillsY) {
+            Map.getInstance().moveTo(this, Map.getInstance().getBottomTile(this));
         }
     }
 

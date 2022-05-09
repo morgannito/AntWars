@@ -83,7 +83,7 @@ public class Tile {
                     SnapshotParameters params = new SnapshotParameters();
                     params.setFill(Color.TRANSPARENT);
                     Image rotatedImage = iv.snapshot(params, null);
-                    gc.drawImage(rotatedImage, x * taille + 15, y * taille + 15, 10, 10);
+                    gc.drawImage(rotatedImage, x * taille + 15, y * taille + 15, taille/2, taille/2);
                 }
             }
         }

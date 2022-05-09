@@ -22,10 +22,10 @@ public class antwars extends Application {
     public void start(Stage stage) {
         System.setProperty("prism.forceGPU", "true");
         System.setProperty("prism.order", "d3d,sw");
+        System.setProperty("prism.text", "t2d");
         Group root = new Group();
         root.setCache(true);
         root.setCacheHint(CacheHint.SPEED);
-
         Canvas canvas = new Canvas(800, 800);
         root.getChildren().add(canvas);
         GraphicsContext gc = canvas.getGraphicsContext2D();
