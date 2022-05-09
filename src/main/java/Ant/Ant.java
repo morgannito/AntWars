@@ -2,9 +2,13 @@ package Ant;
 
 import Map.Map;
 import Resource.Resource;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Ant extends Thread {
@@ -19,16 +23,23 @@ public abstract class Ant extends Thread {
 
     public int lastMove;
 
+    public List<Image> arrayImage;
+
     protected Ant(AnthillColor color, int x, int y) {
         this.x = x;
         this.y = y;
+        arrayImage = new ArrayList<>();
+
         this.color = color;
         if (color == AnthillColor.BLUE) {
             antImage = new Image("ant_blue.png");
+            rotateImage();
         }if (color == AnthillColor.YELLOW) {
             antImage = new Image("ant_grey.png");
+            rotateImage();
         }if (color == AnthillColor.RED) {
             antImage = new Image("ant_red.png");
+            rotateImage();
         }
         this.isInjured = false;
         anthillsX = x;
@@ -76,7 +87,7 @@ public abstract class Ant extends Thread {
                 int boundedRandomValue = ThreadLocalRandom.current().nextInt(0, 4);
                 switch (boundedRandomValue) {
                     case 0:
-                        lastMove = 180;
+                        lastMove = 2;
                         Map.getInstance().moveTo(this, Map.getInstance().getBottomTile(this));
                         break;
                     case 1:
@@ -84,11 +95,11 @@ public abstract class Ant extends Thread {
                         Map.getInstance().moveTo(this, Map.getInstance().getTopTile(this));
                         break;
                     case 2:
-                        lastMove = 270 ;
+                        lastMove = 3 ;
                         Map.getInstance().moveTo(this, Map.getInstance().getLeftTile(this));
                         break;
                     case 3:
-                        lastMove = 90;
+                        lastMove = 1;
                         Map.getInstance().moveTo(this, Map.getInstance().getRightTile(this));
                         break;
                 }
@@ -116,6 +127,21 @@ public abstract class Ant extends Thread {
         this.y = y;
     }
 
-
+    public void rotateImage() {
+        if (antImage != null) {
+            ArrayList<Integer> myAngles = new ArrayList<>();
+            myAngles.add(0);
+            myAngles.add(90);
+            myAngles.add(180);
+            myAngles.add(270);
+            for (Integer myAngle : myAngles) {
+                ImageView iv = new ImageView(antImage);
+                iv.setRotate(myAngle);
+                SnapshotParameters params = new SnapshotParameters();
+                params.setFill(Color.TRANSPARENT);
+                Image rotatedImage = iv.snapshot(params, null);
+                this.arrayImage.add(rotatedImage);
+            }}
+        }
 }
 

@@ -78,12 +78,12 @@ public class Tile {
             if (Ants.size() > 0) {
                 for (Ant ant : Ants) {
                     // faire une rotation de l'image en fonction du mouvement de l'ant
-                    ImageView iv = new ImageView(ant.antImage);
-                    iv.setRotate(ant.lastMove);
-                    SnapshotParameters params = new SnapshotParameters();
-                    params.setFill(Color.TRANSPARENT);
-                    Image rotatedImage = iv.snapshot(params, null);
-                    gc.drawImage(rotatedImage, x * taille + 15, y * taille + 15, taille/2, taille/2);
+//                    ImageView iv = new ImageView(ant.antImage);
+//                    iv.setRotate(ant.lastMove);
+//                    SnapshotParameters params = new SnapshotParameters();
+//                    params.setFill(Color.TRANSPARENT);
+//                    Image rotatedImage = iv.snapshot(params, null);
+                    gc.drawImage(ant.arrayImage.get(ant.lastMove), x * taille + 15, y * taille + 15, taille/2, taille/2);
                 }
             }
         }
