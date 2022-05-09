@@ -30,7 +30,7 @@ public class Tile {
     public Tile(int i, int j) {
         x = i;
         y = j;
-        taille = 40;
+        taille = 10;
         Ants = new ArrayList<Ant>();
         resources = new ArrayList<>();
         for (int k = 0; k < ThreadLocalRandom.current().nextInt(0, 50); k++) {
@@ -74,10 +74,10 @@ public class Tile {
     }
 
     public void drawAnt(GraphicsContext gc) {
-        synchronized (lock) {
-            if (Ants.size() > 0) {
-                for (Ant ant : Ants) {
-                    gc.drawImage(ant.arrayImage.get(ant.lastMove), x * taille + 15, y * taille + 15, taille/2, taille/2);
+        synchronized (Ants) {
+            if (Ants != null) {
+                if (Ants.size() > 0) {
+                    gc.drawImage(Ants.get(0).arrayImage.get(Ants.get(0).lastMove), x * taille , y * taille , taille / 2, taille / 2);
                 }
             }
         }
@@ -101,8 +101,8 @@ public class Tile {
         gfx.setStroke(Color.BLACK);
         gfx.strokeRect(x * taille, y * taille, taille, taille);
 //        gfx.setFont(new javafx.scene.text.Font(10));
-        gfx.fillText("P :"+getResourcesTypeCountPoint() + "", x * taille + 10, y * taille + 5);
-        gfx.fillText("F :"+getResourcesTypeCountFood() + "", x * taille + 10, y * taille + 30);
+//        gfx.fillText("P :"+getResourcesTypeCountPoint() + "", x * taille + 10, y * taille + 5);
+//        gfx.fillText("F :"+getResourcesTypeCountFood() + "", x * taille + 10, y * taille + 30);
         gfx.strokeRect(x * taille, y * taille, taille, taille);
     }
 

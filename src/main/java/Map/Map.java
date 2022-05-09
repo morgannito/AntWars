@@ -14,8 +14,8 @@ public class Map {
     }
 
     private Map() {
-        this.width = 20;
-        this.height = 20;
+        this.width = 100;
+        this.height = 100;
         initMap();
     }
 
@@ -49,28 +49,12 @@ public class Map {
         return tiles;
     }
 
-    public void setTiles(Tile[][] tiles) {
-        Map.tiles = tiles;
-    }
-
     public void initMap() {
         tiles = new Tile[width][height];
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 tiles[i][j] = new Tile(i, j);
-
             }
-        }
-    }
-
-
-    public void display(Map map) {
-        for (int i = 0; i < map.getHeight(); i++) {
-            for (int j = 0; j < map.getWidth(); j++) {
-//                System.out.print(this.tiles[i][j].anthill.getColor());
-//                System.out.print(this.tiles[i][j].anthill.getSoldiers().size());
-            }
-            System.out.println();
         }
     }
 
@@ -90,15 +74,16 @@ public class Map {
             }
         }
     }
-    public Tile getTile(Ant ant) {
-        return tiles[ant.getX()][ant.getY()];
-    }
 
     public void moveTo(Ant ant, Tile tile) {
         tiles[ant.getX()][ant.getY()].removeAnt(ant);
         ant.setX(tile.getX());
         ant.setY(tile.getY());
         tile.addAnt(ant);
+    }
+
+    public Tile getTile(int x, int y) {
+        return tiles[x][y];
     }
 
     public Tile getTopTile(Ant ant) {
