@@ -116,4 +116,10 @@ public class Map {
     public Tile getRightTile(Ant ant) {
         return tiles[ant.getX() + 1][ant.getY()];
     }
+
+    public void fight(Tile tile) {
+    if (tile.Ants.size() > 1) {
+            // TODO: fight
+        }
+    }
 }

@@ -20,17 +20,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Tile {
     int x;
     int y;
-    ArrayList<Resource> resources;
+    final ArrayList<Resource> resources;
     ArrayList<Ant> Ants;
     Anthill anthill;
-
     float taille;
-
     static Image grass = new Image("grass_alt1.png");
-
-
     final Object lock = new Object();
-
 
     public Tile(int i, int j) {
         x = i;
@@ -42,14 +37,19 @@ public class Tile {
             Resource resource = new Resource(ResourceType.FOOD);
             resources.add(resource);
         }
-        if (x == 5 && y == 5) {
-            anthill = new Anthill(AnthillColor.RED, 5, 5);
+        for (int k = 0; k < ThreadLocalRandom.current().nextInt(0, 50); k++) {
+            Resource resource = new Resource(ResourceType.Point);
+            resources.add(resource);
+        }
+
+        if (x == 19 && y == 0) {
+            anthill = new Anthill(AnthillColor.RED, 19, 0);
         }
         if (x == 0 && y == 0) {
             anthill = new Anthill(AnthillColor.BLUE, 0, 0);
         }
-        if (x == 8 && y == 7) {
-            anthill = new Anthill(AnthillColor.YELLOW, 8, 7);
+        if (x == 19 && y == 19) {
+            anthill = new Anthill(AnthillColor.YELLOW, 19, 19);
         }
     }
 
@@ -77,12 +77,6 @@ public class Tile {
         synchronized (lock) {
             if (Ants.size() > 0) {
                 for (Ant ant : Ants) {
-                    // faire une rotation de l'image en fonction du mouvement de l'ant
-//                    ImageView iv = new ImageView(ant.antImage);
-//                    iv.setRotate(ant.lastMove);
-//                    SnapshotParameters params = new SnapshotParameters();
-//                    params.setFill(Color.TRANSPARENT);
-//                    Image rotatedImage = iv.snapshot(params, null);
                     gc.drawImage(ant.arrayImage.get(ant.lastMove), x * taille + 15, y * taille + 15, taille/2, taille/2);
                 }
             }
@@ -91,7 +85,6 @@ public class Tile {
 
     public void displayFx(GraphicsContext gfx) {
         synchronized (lock) {
-            // adapte la taille de la grille en fonction de la taille de la fenetre
             gfx.setFont(new javafx.scene.text.Font(10));
             gfx.clearRect(x * taille, y * taille, taille, taille);
             if (anthill != null) {
@@ -103,16 +96,13 @@ public class Tile {
     }
 
     private void drawResources(GraphicsContext gfx) {
-        // met une image sur la grille
          gfx.drawImage(grass, x * taille, y * taille, taille, taille);
-//        gfx.setFill(Color.GREEN);
-//        gfx.fillRect(x * taille, y * taille, taille, taille);
         gfx.setLineWidth(0.5);
-//        gfx.setTextAlign(TextAlignment.CENTER);
-//        gfx.setTextBaseline(VPos.CENTER);
-//        gfx.setFill(Color.BLACK);
-        gfx.fillText(this.resources.size() + "", x * taille + 5, y * taille + 5);
         gfx.setStroke(Color.BLACK);
+        gfx.strokeRect(x * taille, y * taille, taille, taille);
+//        gfx.setFont(new javafx.scene.text.Font(10));
+        gfx.fillText("P :"+getResourcesTypeCountPoint() + "", x * taille + 10, y * taille + 5);
+        gfx.fillText("F :"+getResourcesTypeCountFood() + "", x * taille + 10, y * taille + 30);
         gfx.strokeRect(x * taille, y * taille, taille, taille);
     }
 
@@ -159,5 +149,27 @@ public class Tile {
         gfx.fillText(anthill.getResources().size() + "", x * taille + (taille / 2), y * taille + (taille / 2));
         gfx.setStroke(Color.BLACK);
         gfx.strokeRect(x * taille, y * taille, taille, taille);
+    }
+    public int getResourcesTypeCountFood() {
+        synchronized (resources) {
+            int count = 0;
+            for (Resource resource : resources) {
+                if (resource.getType() == ResourceType.FOOD) {
+                    count++;
+                }
+            }
+            return count;
+        }
+    }
+    public int getResourcesTypeCountPoint() {
+        synchronized (resources) {
+            int count = 0;
+            for (Resource resource : resources) {
+                if (resource.getType() == ResourceType.Point) {
+                    count++;
+                }
+            }
+            return count;
+        }
     }
 }

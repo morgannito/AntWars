@@ -1,6 +1,4 @@
 package Ant;
-
-
 import javafx.beans.Observable;
 
 public class Ant_Soldier extends Ant {
@@ -18,5 +16,4 @@ public class Ant_Soldier extends Ant {
     public void addObserver(Observable o) {
 
     }
-
 }

@@ -12,6 +12,7 @@ public class Anthill extends Thread {
     protected ArrayList<Ant_Soldier> soldiers;
     protected ArrayList<Resource> resources;
     protected AnthillColor color;
+    public int score;
 
 
     public Anthill(AnthillColor color, int x, int y) {
@@ -58,8 +59,7 @@ public class Anthill extends Thread {
     }
 
     public int getScore() {
-        // TODO return score
-        return 0;
+        return score;
     }
 
     public Ant killAnt(Ant a) {
@@ -85,6 +85,10 @@ public class Anthill extends Thread {
 
     public ArrayList<Resource> getResources() {
         return resources;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public void setResources(ArrayList<Resource> resources) {

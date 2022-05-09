@@ -24,13 +24,11 @@ public class Ant_Worker extends Ant {
 
     }
 
-
     @Override
     public void run() {
         while (true) {
             try {
                 if (Map.getInstance().getTiles()[this.getX()][this.getY()].getAnthill() != null && this.ressouces.size() > 0) {
-//                    System.out.println("worker found anthill");
                         doneRessource();
                 }else {
                     if (ressouces.size() > 4) {
@@ -43,7 +41,6 @@ public class Ant_Worker extends Ant {
                     }
                 }
                 Thread.sleep(50);
-//                System.out.println("Ant is moving " +this.getX()+" "+this.getY());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -78,6 +75,4 @@ public class Ant_Worker extends Ant {
             Map.getInstance().moveTo(this, Map.getInstance().getBottomTile(this));
         }
     }
-
-
 }
