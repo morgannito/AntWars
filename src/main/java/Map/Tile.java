@@ -76,6 +76,8 @@ public class Tile {
         }
     }
 
+
+    // Affiche une fourmilière ou la map classic des resources
     public void displayFx(GraphicsContext gfx) {
         synchronized (lock) {
             gfx.setFont(new javafx.scene.text.Font(10));
@@ -88,6 +90,8 @@ public class Tile {
         }
     }
 
+
+    // dessine les resources
     private void drawResources(GraphicsContext gfx) {
          gfx.drawImage(grass, x * taille, y * taille, taille, taille);
         gfx.setLineWidth(0.5);

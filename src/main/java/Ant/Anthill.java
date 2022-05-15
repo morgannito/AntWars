@@ -24,10 +24,12 @@ public class Anthill extends Thread {
         for (int i = 0; i < 50; i++) {
             Ant_Worker w = new Ant_Worker(color, x, y);
             workers.add(w);
+            // Démarre le thread
             w.start();
         }
         for (int i = 0; i < 5; i++) {
             Ant_Soldier w = new Ant_Soldier(color, x, y);
+            // démarre le thread
             soldiers.add(w);
             w.start();
         }
@@ -45,6 +47,8 @@ public class Anthill extends Thread {
     }
 
 
+
+    // ajoute une resource dans la fourmilière
     public void addRessouce(Resource r) {
         synchronized (resources) {
             resources.add(r);

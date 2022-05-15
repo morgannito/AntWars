@@ -53,6 +53,8 @@ public class Map {
         return tiles;
     }
 
+
+    // initialise la map
     public void initMap() {
         tiles = new Tile[width][height];
         for (int i = 0; i < width; i++) {
@@ -62,6 +64,8 @@ public class Map {
         }
     }
 
+
+   // dessine la map
     public void displayFx(GraphicsContext gfx) {
         for (int i = 0; i < this.getHeight(); i++) {
             for (int j = 0; j < this.getWidth(); j++) {
@@ -71,6 +75,7 @@ public class Map {
     }
 
 
+    // dessine les fourmis
     public void displayAnt(GraphicsContext gfx) {
         for (int i = 0; i < this.getHeight(); i++) {
             for (int j = 0; j < this.getWidth(); j++) {
@@ -79,6 +84,8 @@ public class Map {
         }
     }
 
+
+    // déplace les fourmis
     public void moveTo(Ant ant, Tile tile) {
         tiles[ant.getX()][ant.getY()].removeAnt(ant);
         ant.setX(tile.getX());
@@ -112,6 +119,8 @@ public class Map {
         }
     }
 
+
+    // Place les fourmilières
     public void createAnthill() {
         for (int i = 0; i < this.getHeight(); i++) {
             for (int j = 0; j < this.getWidth(); j++) {
@@ -134,6 +143,8 @@ public class Map {
         }
 
     }
+
+    // Renvoie le score de chaque fourmilières
     public String getEndScore() {
         String score = "";
         for (Anthill anthill : anthills) {
@@ -142,6 +153,8 @@ public class Map {
         return score;
     }
 
+
+    // Stop tout les Threads
     public void stopThread() {
         for (Anthill anthill : anthills) {
             anthill.interrupt();

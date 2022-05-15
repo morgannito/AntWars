@@ -58,19 +58,12 @@ public abstract class Ant extends Thread {
         isInjured = injured;
     }
 
-    public AnthillColor getColor() {
-        return color;
-    }
-
-    public void setColor(AnthillColor color) {
-        this.color = color;
-    }
-
 
     @Override
     public void run() {
         while (true) {
             try {
+                // fait un movement aléatoire par défaut
                 randomMove();
                 Thread.sleep(50);
             } catch (InterruptedException e) {
@@ -106,7 +99,6 @@ public abstract class Ant extends Thread {
         } catch (Exception e) {
             randomMove();
         }
-
     }
 
 
