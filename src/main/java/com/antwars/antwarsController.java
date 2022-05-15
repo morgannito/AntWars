@@ -1,4 +1,4 @@
-package com.example.antwars;
+package com.antwars;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

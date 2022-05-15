@@ -47,7 +47,9 @@ public class Anthill extends Thread {
 
 
     public void addRessouce(Resource r) {
-        this.resources.add(r);
+        synchronized (resources) {
+            resources.add(r);
+        }
     }
 
     public ArrayList<Ant_Soldier> getSoldiers() {

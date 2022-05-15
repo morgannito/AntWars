@@ -30,7 +30,7 @@ public class Tile {
     public Tile(int i, int j) {
         x = i;
         y = j;
-        taille = 10;
+        taille = 40;
         Ants = new ArrayList<Ant>();
         resources = new ArrayList<>();
         for (int k = 0; k < ThreadLocalRandom.current().nextInt(0, 50); k++) {
@@ -100,9 +100,8 @@ public class Tile {
         gfx.setLineWidth(0.5);
         gfx.setStroke(Color.BLACK);
         gfx.strokeRect(x * taille, y * taille, taille, taille);
-//        gfx.setFont(new javafx.scene.text.Font(10));
-//        gfx.fillText("P :"+getResourcesTypeCountPoint() + "", x * taille + 10, y * taille + 5);
-//        gfx.fillText("F :"+getResourcesTypeCountFood() + "", x * taille + 10, y * taille + 30);
+        gfx.fillText("P :"+getResourcesTypeCountPoint() + "", x * taille + 10, y * taille + 5);
+        gfx.fillText("F :"+getResourcesTypeCountFood() + "", x * taille + 10, y * taille + 30);
         gfx.strokeRect(x * taille, y * taille, taille, taille);
     }
 

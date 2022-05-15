@@ -1,4 +1,4 @@
-package com.example.antwars;
+package com.antwars;
 
 import Map.Map;
 import javafx.animation.AnimationTimer;

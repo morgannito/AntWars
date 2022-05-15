@@ -4,6 +4,6 @@ module com.example.antwars {
     requires java.desktop;
 
 
-    opens com.example.antwars to javafx.fxml;
-    exports com.example.antwars;
+    opens com.antwars to javafx.fxml;
+    exports com.antwars;
 }
