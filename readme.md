@@ -1,8 +1,6 @@
 # Projet
 # Ant War
-![img.png](img.png)
-
-
+![](../../Downloads/ezgif-2-cb27358ed7.gif)
 
 # Consigne :
 
@@ -135,3 +133,5 @@ Mais penser à préciser ces features dans le README
     - Rotation des fourmis en fonction de leurs mouvements.
     - Vue sur le score en direct .
     - Vue sur le nombre de points et de foods restant sur une case de la map .
+
+![img.png](img.png)
