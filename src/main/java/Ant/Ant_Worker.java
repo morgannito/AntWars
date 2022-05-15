@@ -31,10 +31,8 @@ public class Ant_Worker extends Ant {
         while (true) {
             try {
                 if (Map.getTiles()[this.getX()][this.getY()].getAnthill() != null && this.resources.size() > 0) {
-                    synchronized (resources) {
                         // pose une resource
                         doneRessource();
-                    }
                 }else {
                     if (Map.getTiles()[this.getX()][this.getY()].getResources().size() > 0 && this.resources.size() < 5) {
                         // prend une resource
@@ -68,9 +66,10 @@ public class Ant_Worker extends Ant {
    // pose la resources dans la fourmilière
     public void doneRessource() {
         Anthill myAnthill = Map.getInstance().getTiles()[this.getX()][this.getY()].getAnthill();
+        if (this.resources.get(0) != null){
+        synchronized (this.resources.get(0)) {
             Resource myResource = this.resources.get(0);
             // si la ressource est de type food
-        synchronized (myResource) {
             if (myResource.getType() == FOOD) {
                 myAnthill.addRessouce(myResource);
                 resources.remove(0);
@@ -79,6 +78,7 @@ public class Ant_Worker extends Ant {
                 myAnthill.setScore(myAnthill.getScore() + 1);
                 resources.remove(0);
             }
+        }
         }
     }
 
