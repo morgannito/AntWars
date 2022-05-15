@@ -59,8 +59,6 @@ public class antwars extends Application {
                     gc.setFill(javafx.scene.paint.Color.BLACK);
                     gc.setFont(javafx.scene.text.Font.font("Arial", 20));
                     gc.fillText(Map.getInstance().getEndScore(), 10, 30);
-//                    gc.fillText("Ants: "+Map.getInstance().getAnts(), 10, 90);
-//                    gc.fillText("Food: "+Map.getInstance().getFood(), 10, 120);
                 }else {
                     // dessine le canvas
                     Map.getInstance().displayFx(gc);
