@@ -36,9 +36,7 @@ public class antwars extends Application {
         stage.show();
         // get timestamp
         long start = System.nanoTime();
-        long duration = Duration.ofMinutes(1).toNanos();
-//        Map.getInstance().initMap();
-//        Map.getInstance().createAnthill();
+        long duration = Duration.ofMinutes(2).toNanos();
         // crée une instance de l'animation
         AnimationTimer timer = new AnimationTimer() {
             @Override
