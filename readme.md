@@ -1,5 +1,7 @@
 # Projet
 # Ant War
+![img.png](img.png)
+
 
 
 # Consigne :
@@ -126,3 +128,10 @@ Vous pouvez ajouter des features persos si vous souhaitez, cela ne pourra que au
 Exemple: de nouveaux type d'ordre, des animations FX, des bruitages,
 
 Mais penser à préciser ces features dans le README
+
+
+# Feature add 
+
+    - Rotation des fourmis en fonction de leurs mouvements
+    - Vue sur le score en direct 
+    - Vue sur le nombre de points et de foods restant sur une case de la map 
