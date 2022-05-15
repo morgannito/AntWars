@@ -22,7 +22,8 @@ public class Tile {
     int y;
     final ArrayList<Resource> resources;
     ArrayList<Ant> Ants;
-    Anthill anthill;
+     public Anthill anthill;
+
     float taille;
     static Image grass = new Image("grass_alt1.png");
     final Object lock = new Object();
@@ -41,19 +42,11 @@ public class Tile {
             Resource resource = new Resource(ResourceType.Point);
             resources.add(resource);
         }
-
-        if (x == 19 && y == 0) {
-            anthill = new Anthill(AnthillColor.RED, 19, 0);
-        }
-        if (x == 0 && y == 0) {
-            anthill = new Anthill(AnthillColor.BLUE, 0, 0);
-        }
-        if (x == 19 && y == 19) {
-            anthill = new Anthill(AnthillColor.YELLOW, 19, 19);
-        }
+        anthill = null;
     }
 
     public Anthill getAnthill() {
+
         return anthill;
     }
 

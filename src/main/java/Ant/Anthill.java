@@ -20,13 +20,12 @@ public class Anthill extends Thread {
         this.soldiers = new ArrayList<>();
         this.resources = new ArrayList<>();
         this.color = color;
-
+        score = 0;
         for (int i = 0; i < 50; i++) {
             Ant_Worker w = new Ant_Worker(color, x, y);
             workers.add(w);
             w.start();
         }
-
         for (int i = 0; i < 5; i++) {
             Ant_Soldier w = new Ant_Soldier(color, x, y);
             soldiers.add(w);

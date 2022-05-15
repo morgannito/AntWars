@@ -6,6 +6,8 @@ import javafx.beans.Observable;
 
 import java.util.ArrayList;
 
+import static Resource.ResourceType.FOOD;
+
 public class Ant_Worker extends Ant {
 
     protected ArrayList<Resource> ressouces;
@@ -28,7 +30,8 @@ public class Ant_Worker extends Ant {
     public void run() {
         while (true) {
             try {
-                if (Map.getInstance().getTiles()[this.getX()][this.getY()].getAnthill() != null && this.ressouces.size() > 0) {
+
+                if (Map.getTiles()[this.getX()][this.getY()].getAnthill() != null && this.ressouces.size() > 0) {
                         doneRessource();
                 }else {
                     if (ressouces.size() > 4) {
@@ -58,8 +61,16 @@ public class Ant_Worker extends Ant {
     public void doneRessource() {
         Anthill myAnthill = Map.getInstance().getTiles()[this.getX()][this.getY()].getAnthill();
         Resource myResource = this.ressouces.get(0);
-        ressouces.remove(0);
-        myAnthill.addRessouce(myResource);
+
+         // si la ressource est de type food
+        if (myResource.getType() == FOOD) {
+            myAnthill.addRessouce(myResource);
+            ressouces.remove(0);
+        } else {
+            // si la ressource est de type Point
+            myAnthill.setScore(myAnthill.getScore() + 1);
+            ressouces.remove(0);
+        }
     }
 
     public void moveToAnthills() {
