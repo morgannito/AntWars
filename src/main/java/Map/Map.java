@@ -7,9 +7,6 @@ import javafx.scene.canvas.GraphicsContext;
 import java.util.ArrayList;
 import java.util.List;
 
-
-// c'est un singleton qui gere la map
-
 public class Map {
 
 
@@ -141,7 +138,6 @@ public class Map {
         String score = "";
         for (Anthill anthill : anthills) {
             score += anthill.getColor() + " : "+ anthill.getScore() + "\n";
-//            System.out.println(anthill.getColor() + " : "+ anthill.getScore());
         }
         return score;
     }
