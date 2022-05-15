@@ -74,7 +74,7 @@ public abstract class Ant extends Thread {
                 randomMove();
                 Thread.sleep(50);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
     }

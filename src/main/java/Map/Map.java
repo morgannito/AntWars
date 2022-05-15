@@ -12,6 +12,8 @@ import java.util.List;
 
 public class Map {
 
+
+
     private static class LoadMap {
         static final Map INSTANCE = new Map();
     }
@@ -135,4 +137,26 @@ public class Map {
         }
 
     }
+    public String getEndScore() {
+        String score = "";
+        for (Anthill anthill : anthills) {
+            score += anthill.getColor() + " : "+ anthill.getScore() + "\n";
+//            System.out.println(anthill.getColor() + " : "+ anthill.getScore());
+        }
+        return score;
+    }
+
+    public void stopThread() {
+        for (Anthill anthill : anthills) {
+            anthill.interrupt();
+            for (Ant ant : anthill.workers) {
+                ant.interrupt();
+            }
+            for (Ant ant : anthill.soldiers) {
+                ant.interrupt();
+            }
+        }
+    }
+
+
 }

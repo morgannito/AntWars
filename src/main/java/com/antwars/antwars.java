@@ -36,7 +36,7 @@ public class antwars extends Application {
         stage.show();
         // get timestamp
         long start = System.nanoTime();
-        long duration = Duration.ofMinutes(2).toNanos();
+        long duration = Duration.ofMinutes(1).toNanos();
 //        Map.getInstance().initMap();
 //        Map.getInstance().createAnthill();
         // crée une instance de l'animation
@@ -45,7 +45,22 @@ public class antwars extends Application {
             public void handle(long now) {
                 // stop la partie au bout de 2 minutes
                 if (now>duration+start) {
+                    Map.getInstance().stopThread();
+                    Map.getInstance().getEndScore();
                     this.stop();
+                    root.getChildren().clear();
+                    // crée un nouveau canvas
+                    Canvas canvas = new Canvas(800, 800);
+                    // add label
+                    root.getChildren().add(canvas);
+                    GraphicsContext gc = canvas.getGraphicsContext2D();
+                    gc.setFill(javafx.scene.paint.Color.WHITE);
+                    gc.fillRect(0, 0, 800, 800);
+                    gc.setFill(javafx.scene.paint.Color.BLACK);
+                    gc.setFont(javafx.scene.text.Font.font("Arial", 20));
+                    gc.fillText(Map.getInstance().getEndScore(), 10, 30);
+//                    gc.fillText("Ants: "+Map.getInstance().getAnts(), 10, 90);
+//                    gc.fillText("Food: "+Map.getInstance().getFood(), 10, 120);
                 }else {
                     // dessine le canvas
                     Map.getInstance().displayFx(gc);

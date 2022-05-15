@@ -32,7 +32,9 @@ public class Ant_Worker extends Ant {
             try {
 
                 if (Map.getTiles()[this.getX()][this.getY()].getAnthill() != null && this.ressouces.size() > 0) {
+                    synchronized (this) {
                         doneRessource();
+                    }
                 }else {
                     if (ressouces.size() > 4) {
                         moveToAnthills();
@@ -45,7 +47,7 @@ public class Ant_Worker extends Ant {
                 }
                 Thread.sleep(50);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
     }
@@ -60,16 +62,17 @@ public class Ant_Worker extends Ant {
 
     public void doneRessource() {
         Anthill myAnthill = Map.getInstance().getTiles()[this.getX()][this.getY()].getAnthill();
-        Resource myResource = this.ressouces.get(0);
-
-         // si la ressource est de type food
-        if (myResource.getType() == FOOD) {
-            myAnthill.addRessouce(myResource);
-            ressouces.remove(0);
-        } else {
-            // si la ressource est de type Point
-            myAnthill.setScore(myAnthill.getScore() + 1);
-            ressouces.remove(0);
+            Resource myResource = this.ressouces.get(0);
+            // si la ressource est de type food
+        synchronized (myResource) {
+            if (myResource.getType() == FOOD) {
+                myAnthill.addRessouce(myResource);
+                ressouces.remove(0);
+            } else {
+                // si la ressource est de type Point
+                myAnthill.setScore(myAnthill.getScore() + 1);
+                ressouces.remove(0);
+            }
         }
     }
 

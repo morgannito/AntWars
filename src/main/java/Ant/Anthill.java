@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class Anthill extends Thread {
     private int x;
     private int y;
-    protected ArrayList<Ant_Worker> workers;
-    protected ArrayList<Ant_Soldier> soldiers;
+    public ArrayList<Ant_Worker> workers;
+    public ArrayList<Ant_Soldier> soldiers;
     protected ArrayList<Resource> resources;
     protected AnthillColor color;
     public int score;
@@ -39,7 +39,7 @@ public class Anthill extends Thread {
             try {
                 Thread.sleep(50);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
     }

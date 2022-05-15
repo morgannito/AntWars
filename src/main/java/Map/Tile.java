@@ -138,7 +138,8 @@ public class Tile {
         gfx.setTextAlign(TextAlignment.CENTER);
         gfx.setTextBaseline(VPos.CENTER);
         gfx.setFill(Color.BLACK);
-        gfx.fillText(anthill.getResources().size() + "", x * taille + (taille / 2), y * taille + (taille / 2));
+//        gfx.fillText(anthill.getResources().size() + "", x * taille + (taille / 2), y * taille + (taille / 2));
+        gfx.fillText(anthill.getScore() + "", x * taille + (taille / 2), y * taille + (taille / 2));
         gfx.setStroke(Color.BLACK);
         gfx.strokeRect(x * taille, y * taille, taille, taille);
     }
