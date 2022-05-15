@@ -132,6 +132,6 @@ Mais penser à préciser ces features dans le README
 
 # Feature add 
 
-    - Rotation des fourmis en fonction de leurs mouvements
-    - Vue sur le score en direct 
-    - Vue sur le nombre de points et de foods restant sur une case de la map 
+    - Rotation des fourmis en fonction de leurs mouvements.
+    - Vue sur le score en direct .
+    - Vue sur le nombre de points et de foods restant sur une case de la map .
